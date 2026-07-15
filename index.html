@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HeleoX — Sicurezza e conformità GDPR del tuo sito, ogni settimana, in automatico</title>
+  <meta name="description" content="HeleoX controlla ogni settimana la sicurezza e la conformità GDPR dei tuoi siti: ti dice cosa non va, come sistemarlo e cita la norma esatta. Pensato per sviluppatori, agenzie web e PMI." />
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ======================= NAV ======================= -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="#top" class="brand">
+        <img src="logo.png" alt="Logo HeleoX" class="brand-logo" />
+        <span class="brand-name">Heleo<span class="accent">X</span></span>
+      </a>
+      <nav class="nav-links">
+        <a href="#cosa">Cos'è</a>
+        <a href="#chi">Per chi</a>
+        <a href="#perche">Perché serve</a>
+        <a href="#osservatorio">Osservatorio</a>
+        <a href="#confronto">Confronto</a>
+        <a href="#piani">Piani</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="#beta" class="btn btn-ghost btn-sm">Entra nella beta</a>
+        <a href="https://app.heleox.it" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Prova ora</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======================= HERO ======================= -->
+  <section class="hero" id="top">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="grid-overlay"></div>
+      <div class="glow glow-1"></div>
+      <div class="glow glow-2"></div>
+    </div>
+
+    <div class="container hero-inner">
+      <div class="hero-copy reveal">
+        <span class="pill">🛰️ Monitoraggio continuo · Security + GDPR</span>
+        <h1>Il tuo sito, controllato ogni settimana.<br /><span class="gradient-text">Come farebbe un security analyst.</span></h1>
+        <p class="lead">
+          HeleoX unisce <strong>scansione di sicurezza</strong> e <strong>verifica di conformità GDPR</strong> in un unico
+          controllo periodico automatico. Non ti dice solo <em>cosa non va</em>: ti dice
+          <strong>come sistemarlo, citando la norma esatta</strong> — e se qualcosa peggiora lo sai prima dei tuoi clienti.
+          O di un attaccante.
+        </p>
+        <div class="hero-cta">
+          <a href="https://app.heleox.it" target="_blank" rel="noopener" class="btn btn-primary">Prova ora — apri HeleoX →</a>
+          <a href="#beta" class="btn btn-ghost">Entra nella beta gratuita</a>
+        </div>
+        <p class="hero-note">Beta gratuita · 5 domini · tutto sbloccato · prezzo founding member -40% a vita</p>
+      </div>
+
+      <!-- Mockup dashboard animato -->
+      <div class="hero-visual reveal delay-1" aria-hidden="true">
+        <div class="dash-card">
+          <div class="dash-head">
+            <span class="dot red"></span><span class="dot amber"></span><span class="dot green"></span>
+            <span class="dash-title">dashboard.heleox — cliente-ecommerce.it</span>
+          </div>
+          <div class="dash-body">
+            <div class="gauge-wrap">
+              <svg class="gauge" viewBox="0 0 120 120">
+                <circle class="gauge-track" cx="60" cy="60" r="52" />
+                <circle class="gauge-fill" cx="60" cy="60" r="52" />
+              </svg>
+              <div class="gauge-label">
+                <span class="gauge-score" id="gaugeScore">0</span>
+                <span class="gauge-grade">Fascia B</span>
+              </div>
+              <div class="radar-sweep"></div>
+            </div>
+            <ul class="findings">
+              <li class="finding f-ok">✔ Certificato TLS valido — scade tra 74 giorni</li>
+              <li class="finding f-med">⚠ CSP presente ma con <code>unsafe-inline</code> <span class="sev sev-med">medium</span></li>
+              <li class="finding f-hi">✖ Cookie di profilazione <strong>prima</strong> del consenso <span class="sev sev-hi">high</span></li>
+              <li class="finding f-fix">↺ Consiglio: blocco preventivo nel tag manager — <em>art. 122 Codice Privacy</em></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= COS'È ======================= -->
+  <section class="section" id="cosa">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Cos'è HeleoX</span>
+        <h2>Un controllo di igiene di sicurezza <span class="gradient-text">che non devi ricordarti di fare</span></h2>
+        <p>
+          Gli strumenti gratuiti (SecurityHeaders, Mozilla Observatory, gli scanner GDPR one-shot) fotografano il tuo sito
+          <em>oggi</em>. Poi arriva un deploy, un cambio di hosting, un plugin nuovo — e la fotografia è vecchia.
+          HeleoX ripete il controllo <strong>ogni settimana in automatico</strong>, confronta con lo scan precedente e ti
+          avvisa solo se qualcosa è peggiorato davvero. Zero rumore, zero cose da ricordare.
+        </p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="card reveal">
+          <div class="card-icon">🛡️</div>
+          <h3>Security Headers</h3>
+          <p>CSP, HSTS, X-Frame-Options e gli altri header che bloccano XSS, clickjacking e downgrade — verificati contro regole aggiornate, non solo "presente/assente".</p>
+        </div>
+        <div class="card reveal delay-1">
+          <div class="card-icon">🔐</div>
+          <h3>TLS &amp; Certificati</h3>
+          <p>Protocolli obsoleti, cipher deboli, certificati in scadenza o mal configurati. Lo scopri settimane prima, non dal cliente che chiama lunedì mattina.</p>
+        </div>
+        <div class="card reveal delay-2">
+          <div class="card-icon">🕸️</div>
+          <h3>Sottodomini dimenticati</h3>
+          <p>Enumerazione passiva via Certificate Transparency e rilevamento del <strong>subdomain takeover</strong>: lo staging di due anni fa che può diventare una pagina di phishing a nome tuo.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-icon">🔑</div>
+          <h3>Chiavi e secret esposti</h3>
+          <p>API key, token e credenziali dimenticati nel JavaScript pubblico. I bot li cercano ogni giorno; HeleoX li trova prima — e non li salva mai in chiaro.</p>
+        </div>
+        <div class="card reveal delay-1">
+          <div class="card-icon">💉</div>
+          <h3>XSS &amp; SQL Injection</h3>
+          <p>Rilevamento passivo con payload innocui: individua form e parametri vulnerabili <strong>senza mai sfruttarli</strong>. Detection, non exploitation — per scelta architetturale.</p>
+        </div>
+        <div class="card card-featured reveal delay-2">
+          <div class="card-icon">⚖️</div>
+          <h3>Conformità GDPR a runtime</h3>
+          <p>Non una lista statica di cookie noti: HeleoX <strong>osserva il sito come un utente vero</strong> — cookie prima e dopo il consenso, richieste di rete reali — e i consigli di rimediazione <strong>citano l'articolo di norma</strong>. Nessun altro strumento lo fa.</p>
+        </div>
+      </div>
+
+      <div class="score-strip reveal">
+        <div class="score-strip-text">
+          <h3>Un punteggio che chiunque capisce in 30 secondi</h3>
+          <p>Ogni dominio riceve un risk score 0-100 e una fascia da A a F. Il report PDF è pensato per essere girato al cliente finale così com'è.</p>
+        </div>
+        <div class="grade-scale">
+          <span class="grade g-a">A</span>
+          <span class="grade g-b">B</span>
+          <span class="grade g-c">C</span>
+          <span class="grade g-d">D</span>
+          <span class="grade g-f">F</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= PER CHI ======================= -->
+  <section class="section section-alt" id="chi">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">A chi serve</span>
+        <h2>Costruito per chi <span class="gradient-text">consegna e gestisce siti</span> — non per i security team</h2>
+        <p>Detectify e Intruder servono i pentester, a 100-500 €/mese. HeleoX serve tutti gli altri: chi la sicurezza la salta perché sembra costosa e complicata.</p>
+      </div>
+
+      <div class="personas">
+        <div class="persona reveal">
+          <div class="persona-emoji">🧑‍💻</div>
+          <h3>Freelance &amp; sviluppatori indipendenti</h3>
+          <p>Consegni siti ai clienti e vuoi distinguerti? Includi "monitoraggio sicurezza e GDPR" nel prezzo: ogni mese un report PDF, ricavo ricorrente su lavoro one-shot.</p>
+          <span class="persona-plan">Piano Solo Dev — €9/mese</span>
+        </div>
+        <div class="persona reveal delay-1">
+          <div class="persona-emoji">🏢</div>
+          <h3>Web agency e softwarehouse</h3>
+          <p>10, 20, 50 siti clienti in gestione e nessuna visibilità sistematica sulla loro postura? Un'unica dashboard, un PDF white-label col tuo logo per ogni cliente.</p>
+          <span class="persona-plan">Piano Studio / Studio+ — da €25/mese</span>
+        </div>
+        <div class="persona reveal delay-2">
+          <div class="persona-emoji">🚀</div>
+          <h3>Indie hacker &amp; founder SaaS</h3>
+          <p>Hai 3 progetti online e zero tempo per la sicurezza? HeleoX è il "security analyst" che i tuoi progetti non avranno mai — a meno di un caffè a settimana.</p>
+          <span class="persona-plan">Piano Solo Dev — €9/mese</span>
+        </div>
+        <div class="persona reveal delay-3">
+          <div class="persona-emoji">🛒</div>
+          <h3>PMI ed e-commerce</h3>
+          <p>Il Garante sanziona anche i piccoli, e i bot non guardano il fatturato. Un controllo periodico comprensibile — fascia A-F, non gergo tecnico.</p>
+          <span class="persona-plan">Tramite la tua agenzia, o in autonomia</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= PERCHÉ ANCHE I PICCOLI ======================= -->
+  <section class="section" id="perche">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">«Il mio sito è troppo piccolo per interessare a qualcuno»</span>
+        <h2>Gli attacchi ai siti piccoli <span class="gradient-text">non sono mirati. Sono automatici.</span></h2>
+        <p>
+          Nessun criminale sta scegliendo bersagli: <strong>bot automatici scansionano l'intero web</strong> cercando pattern noti —
+          chiavi esposte, CMS non aggiornati, form vulnerabili. La dimensione non ti protegge, perché nessun umano sta guardando.
+          E anche senza "niente da rubare", il tuo sito ha una cosa che vale: <strong>la reputazione del dominio</strong>,
+          perfetta per ospitare phishing a nome tuo.
+        </p>
+      </div>
+
+      <div class="stats reveal">
+        <div class="stat">
+          <span class="stat-num"><span class="counter" data-target="43">0</span>%</span>
+          <span class="stat-label">dei cyberattacchi prende di mira le piccole imprese</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num"><span class="counter" data-target="40">0</span>%</span>
+          <span class="stat-label">delle PMI dichiara che un attacco da 100.000&nbsp;$ le metterebbe fuori mercato</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">120k–1,2M&nbsp;$</span>
+          <span class="stat-label">costo realistico di un incidente per una PMI (Verizon DBIR 2025)</span>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="panel panel-danger reveal">
+          <h3>⚖️ E il Garante non guarda solo i grandi</h3>
+          <ul class="checklist bad">
+            <li><strong>10.000 – 120.000 €</strong> di sanzione per cookie installati senza consenso</li>
+            <li><strong>6.000 – 36.000 €</strong> per informativa privacy mancante o inadeguata</li>
+            <li>Oltre <strong>300 sanzioni in Italia</strong> (~134 M€) — anche a PMI, professionisti e comuni</li>
+            <li>Pena accessoria: <strong>pubblicazione del provvedimento sul tuo stesso sito</strong></li>
+            <li>Vigila anche la <strong>Guardia di Finanza</strong> — non serve la segnalazione di un utente</li>
+          </ul>
+        </div>
+        <div class="panel panel-good reveal delay-1">
+          <h3>💡 Il caso che dovresti conoscere</h3>
+          <p>
+            Febbraio 2025: il Garante accerta un banner cookie non conforme, ma invece della multa sceglie il semplice
+            <strong>ammonimento</strong> — perché l'azienda <em>si era attivata per monitorare e rimediare</em>.
+          </p>
+          <p class="highlight-box">
+            Dimostrare di controllare e correggere è esattamente ciò che trasforma una sanzione in un avvertimento.
+            <strong>È esattamente ciò che HeleoX documenta per te, ogni settimana.</strong>
+          </p>
+        </div>
+      </div>
+
+      <!-- Casi reali -->
+      <div class="section-head reveal" style="margin-top:4.5rem">
+        <span class="eyebrow">Storie che succedono davvero</span>
+        <h2>Tre modi in cui va a finire male <span class="gradient-text">(quando nessuno guarda)</span></h2>
+      </div>
+      <div class="cases">
+        <article class="case reveal">
+          <span class="case-tag">Certificato scaduto</span>
+          <p>«Il certificato dell'e-commerce del cliente scade sabato notte. Lunedì il cliente chiama furioso: da due giorni ogni visitatore vede <em>"La connessione non è privata"</em>.»</p>
+          <p class="case-fix">→ HeleoX lo segnala settimane prima. <strong>Il tuo cliente non dovrebbe essere il tuo sistema di monitoraggio.</strong></p>
+        </article>
+        <article class="case reveal delay-1">
+          <span class="case-tag">Chiave API nel JavaScript</span>
+          <p>«Una chiave AWS finisce nel bundle di produzione. I bot la trovano in pochi minuti: mining di criptovalute a spese dell'account. La bolletta arriva a fine mese.»</p>
+          <p class="case-fix">→ I bot scansionano il tuo sito ogni giorno. <strong>Tu ogni quanto?</strong></p>
+        </article>
+        <article class="case reveal delay-2">
+          <span class="case-tag">Il sito «senza niente da rubare»</span>
+          <p>«Sito vetrina di un artigiano, un form contatti. Compromesso non per i dati — per ospitare phishing verso terzi. Blacklist Google, traffico azzerato per settimane.»</p>
+          <p class="case-fix">→ Non hanno rubato niente. <strong>Hanno solo truffato altri, a nome suo.</strong></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= OSSERVATORIO ======================= -->
+  <!-- Dati statici curati (script.js) — nessuna richiesta esterna a runtime,
+       il sito resta senza cookie. Fonti citate su ogni voce. -->
+  <section class="section" id="osservatorio">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Osservatorio cyber</span>
+        <h2>Cosa sta succedendo là fuori, <span class="gradient-text">in numeri</span></h2>
+        <p>
+          Attacchi, perdite economiche e sanzioni dal mondo reale. Aggiornato a <strong>luglio 2026</strong>,
+          solo fonti pubbliche — citate voce per voce, come facciamo nei report.
+        </p>
+      </div>
+
+      <div class="obs-tiles reveal">
+        <div class="obs-tile">
+          <span class="obs-num">+<span class="counter" data-target="48.7" data-decimals="1">0</span>%</span>
+          <span class="obs-label">incidenti gravi nel mondo nel 2025 — il peggior anno di sempre</span>
+          <span class="obs-src">Rapporto Clusit 2026</span>
+        </div>
+        <div class="obs-tile">
+          <span class="obs-num"><span class="counter" data-target="3.6" data-decimals="1">0</span>&nbsp;M€</span>
+          <span class="obs-label">costo medio di un data breach per un'azienda italiana</span>
+          <span class="obs-src">IBM Cost of a Data Breach</span>
+        </div>
+        <div class="obs-tile">
+          <span class="obs-num">1 su <span class="counter" data-target="4">0</span></span>
+          <span class="obs-label">PMI ha subito una violazione informatica negli ultimi 3 anni</span>
+          <span class="obs-src">Rapporto Clusit 2026</span>
+        </div>
+        <div class="obs-tile">
+          <span class="obs-num"><span class="counter" data-target="266">0</span>&nbsp;M€</span>
+          <span class="obs-label">di sanzioni del Garante Privacy in Italia dal 2018 (~400 provvedimenti)</span>
+          <span class="obs-src">Garante per la protezione dei dati personali</span>
+        </div>
+      </div>
+
+      <div class="obs-grid">
+        <div class="obs-panel reveal">
+          <div class="obs-panel-head">
+            <h3>Attacchi gravi noti in Italia, per anno</h3>
+            <p class="obs-panel-sub">Incidenti di dominio pubblico analizzati da Clusit — il sommerso è più grande.</p>
+          </div>
+          <div class="bars" id="obsBars" aria-label="Grafico a barre: attacchi gravi noti in Italia per anno, dal 2022 al 2025"></div>
+          <p class="obs-source">Fonte: Rapporti Clusit 2023–2026</p>
+        </div>
+        <div class="obs-panel reveal delay-1">
+          <div class="obs-panel-head obs-feed-head">
+            <h3><span class="live-dot" aria-hidden="true"></span> Ultime dal fronte</h3>
+            <p class="obs-panel-sub">Casi e numeri recenti, con la fonte accanto a ogni voce.</p>
+          </div>
+          <ul class="news-feed" id="newsFeed"></ul>
+        </div>
+      </div>
+
+      <p class="obs-cta reveal">
+        Nessuno di questi numeri richiede che il bersaglio sia "interessante". Serve solo che nessuno stia guardando.
+        <a href="https://app.heleox.it" target="_blank" rel="noopener"><strong>HeleoX guarda per te →</strong></a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ======================= CONFRONTO ======================= -->
+  <section class="section section-alt" id="confronto">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">HeleoX vs il resto del mondo</span>
+        <h2>Ogni concorrente copre <span class="gradient-text">metà del problema</span>. E te la fa pagare a sito.</h2>
+        <p>
+          Chi fa security non fa conformità. Chi fa conformità non fa security — e spesso funziona solo su WordPress,
+          con prezzo pieno per ogni dominio in più. HeleoX è l'unico che unisce le due cose, su qualsiasi piattaforma,
+          senza sovrapprezzo per sito.
+        </p>
+      </div>
+
+      <div class="table-wrap reveal">
+        <table class="compare">
+          <thead>
+            <tr>
+              <th>Funzionalità</th>
+              <th class="col-hx">HeleoX</th>
+              <th>SecurityBot</th>
+              <th>Sucuri / SiteLock</th>
+              <th>Wordfence + Patchstack</th>
+              <th>iubenda / Cookiebot</th>
+              <th>Probely / Detectify</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Security headers + TLS</td><td class="col-hx">✅</td><td>✅</td><td>parziale</td><td>❌</td><td>❌</td><td>✅</td></tr>
+            <tr><td>Subdomain takeover</td><td class="col-hx">✅</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>✅</td></tr>
+            <tr><td>Secret/API key esposti</td><td class="col-hx">✅</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>parziale</td></tr>
+            <tr><td>XSS/SQLi detection</td><td class="col-hx">✅</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>✅</td></tr>
+            <tr><td>Conformità GDPR <strong>a runtime</strong></td><td class="col-hx">✅ unico</td><td>❌</td><td>❌</td><td>❌</td><td>statica, a lista</td><td>❌</td></tr>
+            <tr><td>Rimediazione <strong>con citazione della norma</strong></td><td class="col-hx">✅ unico</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td></tr>
+            <tr><td>Qualsiasi piattaforma (non solo WP)</td><td class="col-hx">✅</td><td>✅</td><td>✅</td><td>❌ solo WP</td><td>✅</td><td>✅</td></tr>
+            <tr><td>Multi-dominio senza sovrapprezzo</td><td class="col-hx">✅</td><td>❌</td><td>❌</td><td>❌</td><td>❌ prezzo a sito</td><td>parziale</td></tr>
+            <tr class="row-price"><td>Prezzo d'ingresso</td><td class="col-hx"><strong>€9/mese · 3 domini</strong></td><td>$5 · 1 sito</td><td>$19-20 · 1 sito</td><td>~$120-240/anno · 1 sito</td><td>~€10-50/mese · <strong>a sito</strong></td><td>€98-149+/mese</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="math-box reveal">
+        <h3>Facciamo i conti: agenzia con 10 siti clienti</h3>
+        <div class="math-row">
+          <div class="math-item">
+            <span class="math-label">Stack equivalente oggi<br /><small>(Sucuri/SiteLock ×10 + Cookiebot ×10)</small></span>
+            <span class="math-value strike">€300–900<span>/mese</span></span>
+          </div>
+          <div class="math-vs">vs</div>
+          <div class="math-item math-win">
+            <span class="math-label">HeleoX Studio<br /><small>security + conformità + consigli AI, 10 domini</small></span>
+            <span class="math-value">€25<span>/mese</span></span>
+          </div>
+        </div>
+        <p class="math-note">
+          Onestà prima di tutto: HeleoX <strong>non</strong> sostituisce un WAF o la rimozione malware — è monitoraggio e
+          diagnosi, non mitigazione attiva. Ma per sapere ogni settimana se i tuoi siti sono a posto, l'alternativa
+          reale è combinare 2-3 strumenti pagati per singolo sito.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= PIANI ======================= -->
+  <section class="section" id="piani">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Prezzi</span>
+        <h2>Prezzi da indie, <span class="gradient-text">non da enterprise</span></h2>
+        <p>Tutti i piani includono monitoraggio automatico, confronto storico, notifiche solo quando serve. IVA esclusa.</p>
+      </div>
+
+      <div class="plans">
+        <div class="plan reveal">
+          <h3>Free</h3>
+          <div class="plan-price">€0<span>/mese</span></div>
+          <ul>
+            <li>1 dominio</li>
+            <li>Scan settimanale</li>
+            <li>Headers + TLS</li>
+            <li>Dashboard</li>
+          </ul>
+          <a href="#beta" class="btn btn-ghost btn-block">Inizia gratis</a>
+        </div>
+        <div class="plan reveal delay-1">
+          <h3>Solo Dev</h3>
+          <div class="plan-price">€9<span>/mese</span></div>
+          <div class="plan-per">€3 a dominio</div>
+          <ul>
+            <li>3 domini</li>
+            <li>Scan settimanale</li>
+            <li>Tutti i moduli security</li>
+            <li>Conformità GDPR AI</li>
+            <li>Report PDF</li>
+          </ul>
+          <a href="#beta" class="btn btn-ghost btn-block">Scegli Solo Dev</a>
+        </div>
+        <div class="plan plan-featured reveal delay-2">
+          <span class="plan-badge">Più popolare</span>
+          <h3>Studio</h3>
+          <div class="plan-price">€25<span>/mese</span></div>
+          <div class="plan-per">€2,50 a dominio</div>
+          <ul>
+            <li>10 domini</li>
+            <li>Scan 2×/settimana</li>
+            <li>Tutti i moduli security</li>
+            <li>Conformità GDPR AI</li>
+            <li><strong>Consigli di rimediazione con citazione normativa</strong></li>
+          </ul>
+          <a href="#beta" class="btn btn-primary btn-block">Scegli Studio</a>
+        </div>
+        <div class="plan reveal delay-3">
+          <h3>Studio+</h3>
+          <div class="plan-price">€49<span>/mese</span></div>
+          <div class="plan-per">€1,96 a dominio</div>
+          <ul>
+            <li>25 domini</li>
+            <li>Scan giornaliero</li>
+            <li>Tutto di Studio</li>
+            <li><strong>PDF white-label</strong> (il tuo logo)</li>
+            <li>Scan autenticato*</li>
+          </ul>
+          <a href="#beta" class="btn btn-ghost btn-block">Scegli Studio+</a>
+        </div>
+      </div>
+      <p class="plans-note">Fatturazione annuale: 2 mesi gratis. Dominio extra: +€2/mese. *In arrivo. Garanzia 14 giorni soddisfatti o rimborsati.</p>
+    </div>
+  </section>
+
+  <!-- ======================= CTA BETA ======================= -->
+  <section class="section beta" id="beta">
+    <div class="container beta-inner reveal">
+      <img src="logo.png" alt="" class="beta-logo" />
+      <h2>La beta è aperta. <span class="gradient-text">Tutto sbloccato, gratis.</span></h2>
+      <p>
+        Cerchiamo sviluppatori e agenzie che usino HeleoX su siti veri e ci dicano cosa migliorare.
+        In cambio: <strong>5 domini, ogni funzionalità attiva, zero costi</strong> — e il prezzo
+        <strong>founding member bloccato a vita (-40%)</strong> se poi decidi di restare.
+      </p>
+      <div class="hero-cta center">
+        <a href="mailto:samuele.busato@heleox.it?subject=Beta%20HeleoX" class="btn btn-primary btn-lg">Candidati alla beta →</a>
+        <a href="https://app.heleox.it" target="_blank" rel="noopener" class="btn btn-ghost btn-lg">Prova ora</a>
+      </div>
+      <p class="hero-note">Posti limitati ai primi 50 iscritti. Nessuna carta di credito richiesta.</p>
+    </div>
+  </section>
+
+  <!-- ======================= FOOTER ======================= -->
+  <!-- Dati identificativi del prestatore: art. 7 D.lgs. 70/2003.
+       PRIMA DEL LANCIO COMMERCIALE aggiungere qui: P.IVA (art. 35 c.1
+       DPR 633/72, obbligo di indicazione in homepage) e sede.
+       Vedi docs/legale-beta.md nel repo principale. -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="brand">
+        <img src="logo.png" alt="" class="brand-logo" />
+        <span class="brand-name">Heleo<span class="accent">X</span></span>
+      </div>
+      <p>Monitoraggio continuo di sicurezza e conformità per siti web.<br />Detection, non exploitation: nessuno scan senza verifica di proprietà del dominio.</p>
+      <nav class="footer-links" aria-label="Note legali">
+        <a href="privacy.html">Privacy policy</a>
+        <span aria-hidden="true">·</span>
+        <a href="cookie.html">Cookie policy</a>
+        <span aria-hidden="true">·</span>
+        <a href="mailto:samuele.busato@heleox.it">samuele.busato@heleox.it</a>
+      </nav>
+      <p class="footer-legal">
+        HeleoX è un servizio in <strong>beta gratuita</strong> gestito da Samuele Busato ·
+        Contatto: <a href="mailto:samuele.busato@heleox.it">samuele.busato@heleox.it</a>
+      </p>
+      <p class="footer-fine">
+        Questo sito non utilizza cookie né strumenti di tracciamento — <a href="cookie.html">verifica tu stesso</a>.<br />
+        © 2026 HeleoX — I dati citati provengono da fonti pubbliche (Rapporti Clusit, IBM Cost of a Data Breach, Verizon DBIR, StationX, Garante per la protezione dei dati personali), linkate accanto a ogni voce.
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
