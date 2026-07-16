@@ -356,6 +356,15 @@ code {
 .plan ul li { font-size: 0.88rem; color: var(--text-dim); padding-left: 1.4rem; position: relative; }
 .plan ul li::before { content: "✓"; position: absolute; left: 0; color: var(--emerald); font-weight: 800; }
 .plan ul li strong { color: var(--text); }
+.plan-custom {
+  margin-top: 1.2rem; background: var(--surface); border: 1px dashed var(--border);
+  border-radius: var(--radius); padding: 1.4rem 1.5rem;
+  display: flex; align-items: center; justify-content: space-between; gap: 1.2rem; flex-wrap: wrap;
+}
+.plan-custom-text h3 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-dim); }
+.plan-custom-text p { margin-top: 0.3rem; font-size: 0.9rem; color: var(--text-dim); }
+.plan-custom-text p strong { color: var(--text); }
+.plan-custom .btn { flex-shrink: 0; }
 .plans-note { margin-top: 1.6rem; text-align: center; font-size: 0.85rem; color: var(--text-dim); }
 
 /* ---------- beta ---------- */
