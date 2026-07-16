@@ -22,9 +22,9 @@
         <a href="#cosa">Cos'è</a>
         <a href="#chi">Per chi</a>
         <a href="#perche">Perché serve</a>
-        <a href="#osservatorio">Osservatorio</a>
         <a href="#confronto">Confronto</a>
         <a href="#piani">Piani</a>
+        <a href="blog.html">Blog</a>
       </nav>
       <div class="nav-cta">
         <a href="#beta" class="btn btn-ghost btn-sm">Entra nella beta</a>
@@ -190,7 +190,9 @@
     </div>
   </section>
 
-  <!-- ======================= PERCHÉ ANCHE I PICCOLI ======================= -->
+  <!-- ======================= PERCHÉ ANCHE I PICCOLI + OSSERVATORIO ======================= -->
+  <!-- Dati statici curati (script.js) — nessuna richiesta esterna a runtime,
+       il sito resta senza cookie. Fonti citate su ogni voce. -->
   <section class="section" id="perche">
     <div class="container">
       <div class="section-head reveal">
@@ -199,109 +201,31 @@
         <p>
           Nessun criminale sta scegliendo bersagli: <strong>bot automatici scansionano l'intero web</strong> cercando pattern noti —
           chiavi esposte, CMS non aggiornati, form vulnerabili. La dimensione non ti protegge, perché nessun umano sta guardando.
-          E anche senza "niente da rubare", il tuo sito ha una cosa che vale: <strong>la reputazione del dominio</strong>,
-          perfetta per ospitare phishing a nome tuo.
-        </p>
-      </div>
-
-      <div class="stats reveal">
-        <div class="stat">
-          <span class="stat-num"><span class="counter" data-target="43">0</span>%</span>
-          <span class="stat-label">dei cyberattacchi prende di mira le piccole imprese</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num"><span class="counter" data-target="40">0</span>%</span>
-          <span class="stat-label">delle PMI dichiara che un attacco da 100.000&nbsp;$ le metterebbe fuori mercato</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num">120k–1,2M&nbsp;$</span>
-          <span class="stat-label">costo realistico di un incidente per una PMI (Verizon DBIR 2025)</span>
-        </div>
-      </div>
-
-      <div class="two-col">
-        <div class="panel panel-danger reveal">
-          <h3>⚖️ E il Garante non guarda solo i grandi</h3>
-          <ul class="checklist bad">
-            <li><strong>10.000 – 120.000 €</strong> di sanzione per cookie installati senza consenso</li>
-            <li><strong>6.000 – 36.000 €</strong> per informativa privacy mancante o inadeguata</li>
-            <li>Oltre <strong>300 sanzioni in Italia</strong> (~134 M€) — anche a PMI, professionisti e comuni</li>
-            <li>Pena accessoria: <strong>pubblicazione del provvedimento sul tuo stesso sito</strong></li>
-            <li>Vigila anche la <strong>Guardia di Finanza</strong> — non serve la segnalazione di un utente</li>
-          </ul>
-        </div>
-        <div class="panel panel-good reveal delay-1">
-          <h3>💡 Il caso che dovresti conoscere</h3>
-          <p>
-            Febbraio 2025: il Garante accerta un banner cookie non conforme, ma invece della multa sceglie il semplice
-            <strong>ammonimento</strong> — perché l'azienda <em>si era attivata per monitorare e rimediare</em>.
-          </p>
-          <p class="highlight-box">
-            Dimostrare di controllare e correggere è esattamente ciò che trasforma una sanzione in un avvertimento.
-            <strong>È esattamente ciò che HeleoX documenta per te, ogni settimana.</strong>
-          </p>
-        </div>
-      </div>
-
-      <!-- Casi reali -->
-      <div class="section-head reveal" style="margin-top:4.5rem">
-        <span class="eyebrow">Storie che succedono davvero</span>
-        <h2>Tre modi in cui va a finire male <span class="gradient-text">(quando nessuno guarda)</span></h2>
-      </div>
-      <div class="cases">
-        <article class="case reveal">
-          <span class="case-tag">Certificato scaduto</span>
-          <p>«Il certificato dell'e-commerce del cliente scade sabato notte. Lunedì il cliente chiama furioso: da due giorni ogni visitatore vede <em>"La connessione non è privata"</em>.»</p>
-          <p class="case-fix">→ HeleoX lo segnala settimane prima. <strong>Il tuo cliente non dovrebbe essere il tuo sistema di monitoraggio.</strong></p>
-        </article>
-        <article class="case reveal delay-1">
-          <span class="case-tag">Chiave API nel JavaScript</span>
-          <p>«Una chiave AWS finisce nel bundle di produzione. I bot la trovano in pochi minuti: mining di criptovalute a spese dell'account. La bolletta arriva a fine mese.»</p>
-          <p class="case-fix">→ I bot scansionano il tuo sito ogni giorno. <strong>Tu ogni quanto?</strong></p>
-        </article>
-        <article class="case reveal delay-2">
-          <span class="case-tag">Il sito «senza niente da rubare»</span>
-          <p>«Sito vetrina di un artigiano, un form contatti. Compromesso non per i dati — per ospitare phishing verso terzi. Blacklist Google, traffico azzerato per settimane.»</p>
-          <p class="case-fix">→ Non hanno rubato niente. <strong>Hanno solo truffato altri, a nome suo.</strong></p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======================= OSSERVATORIO ======================= -->
-  <!-- Dati statici curati (script.js) — nessuna richiesta esterna a runtime,
-       il sito resta senza cookie. Fonti citate su ogni voce. -->
-  <section class="section" id="osservatorio">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Osservatorio cyber</span>
-        <h2>Cosa sta succedendo là fuori, <span class="gradient-text">in numeri</span></h2>
-        <p>
-          Attacchi, perdite economiche e sanzioni dal mondo reale. Aggiornato a <strong>luglio 2026</strong>,
-          solo fonti pubbliche — citate voce per voce, come facciamo nei report.
+          I numeri qui sotto arrivano dal mondo reale — aggiornati a <strong>luglio 2026</strong>, solo fonti pubbliche,
+          citate voce per voce come facciamo nei report.
         </p>
       </div>
 
       <div class="obs-tiles reveal">
+        <div class="obs-tile">
+          <span class="obs-num"><span class="counter" data-target="43">0</span>%</span>
+          <span class="obs-label">dei cyberattacchi prende di mira le piccole imprese</span>
+          <span class="obs-src">StationX</span>
+        </div>
+        <div class="obs-tile">
+          <span class="obs-num">120k–1,2M&nbsp;$</span>
+          <span class="obs-label">costo realistico di un incidente per una PMI</span>
+          <span class="obs-src">Verizon DBIR 2025</span>
+        </div>
         <div class="obs-tile">
           <span class="obs-num">+<span class="counter" data-target="48.7" data-decimals="1">0</span>%</span>
           <span class="obs-label">incidenti gravi nel mondo nel 2025 — il peggior anno di sempre</span>
           <span class="obs-src">Rapporto Clusit 2026</span>
         </div>
         <div class="obs-tile">
-          <span class="obs-num"><span class="counter" data-target="3.6" data-decimals="1">0</span>&nbsp;M€</span>
-          <span class="obs-label">costo medio di un data breach per un'azienda italiana</span>
-          <span class="obs-src">IBM Cost of a Data Breach</span>
-        </div>
-        <div class="obs-tile">
           <span class="obs-num">1 su <span class="counter" data-target="4">0</span></span>
           <span class="obs-label">PMI ha subito una violazione informatica negli ultimi 3 anni</span>
           <span class="obs-src">Rapporto Clusit 2026</span>
-        </div>
-        <div class="obs-tile">
-          <span class="obs-num"><span class="counter" data-target="266">0</span>&nbsp;M€</span>
-          <span class="obs-label">di sanzioni del Garante Privacy in Italia dal 2018 (~400 provvedimenti)</span>
-          <span class="obs-src">Garante per la protezione dei dati personali</span>
         </div>
       </div>
 
