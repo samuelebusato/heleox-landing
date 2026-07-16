@@ -78,6 +78,41 @@ const counterObserver = new IntersectionObserver(
 );
 document.querySelectorAll(".counter").forEach((el) => counterObserver.observe(el));
 
+// ---------- Piani (sezione #piani) ----------
+// I dati vivono in plans.json: per cambiare prezzi, domini o feature
+// basta modificare quel file. La fetch è locale (stesso dominio):
+// nessun servizio terzo, nessun cookie.
+const plansGrid = document.getElementById("plansGrid");
+if (plansGrid) {
+  fetch("plans.json", { cache: "no-cache" })
+    .then((res) => {
+      if (!res.ok) throw new Error(res.status);
+      return res.json();
+    })
+    .then(({ plans, note }) => {
+      plans.forEach((plan, i) => {
+        const div = document.createElement("div");
+        div.className =
+          "plan" + (plan.featured ? " plan-featured" : "") +
+          " reveal" + (i > 0 ? ` delay-${Math.min(i, 3)}` : "");
+        div.innerHTML = `
+          ${plan.badge ? `<span class="plan-badge">${plan.badge}</span>` : ""}
+          <h3>${plan.name}</h3>
+          <div class="plan-price">${plan.price}<span>${plan.period}</span></div>
+          ${plan.perDomain ? `<div class="plan-per">${plan.perDomain}</div>` : ""}
+          <ul>${plan.features.map((f) => `<li>${f}</li>`).join("")}</ul>
+          <a href="${plan.ctaHref}" class="btn ${plan.featured ? "btn-primary" : "btn-ghost"} btn-block">${plan.cta}</a>`;
+        plansGrid.appendChild(div);
+        revealObserver.observe(div);
+      });
+      const noteEl = document.getElementById("plansNote");
+      if (noteEl && note) noteEl.textContent = note;
+    })
+    .catch(() => {
+      // in caso di errore la sezione resta vuota ma il resto del sito funziona
+    });
+}
+
 // ================================================================
 // Osservatorio — dati statici curati a mano, nessuna richiesta di
 // rete a runtime (il sito resta senza cookie né chiamate a terzi:

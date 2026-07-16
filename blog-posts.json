@@ -1,0 +1,35 @@
+[
+  {
+    "date": "16 luglio 2026",
+    "tag": "Beta",
+    "title": "La beta di HeleoX è aperta: 5 domini, tutto sbloccato",
+    "text": "Cerchiamo sviluppatori e agenzie che usino HeleoX su siti veri e ci dicano cosa migliorare. In cambio: <strong>5 domini, ogni funzionalità attiva, zero costi</strong>.",
+    "body": [
+      "Cerchiamo sviluppatori e agenzie che usino HeleoX su siti veri e ci dicano cosa migliorare. In cambio: <strong>5 domini, ogni funzionalità attiva, zero costi</strong> — e prezzo founding member bloccato a vita (-40%) se poi decidi di restare.",
+      "Durante la beta hai accesso a tutti i moduli: security headers, TLS e certificati, sottodomini dimenticati, chiavi e secret esposti, rilevamento XSS/SQLi e conformità GDPR a runtime con consigli di rimediazione che citano la norma esatta.",
+      "I posti sono limitati ai primi 50 iscritti e non è richiesta alcuna carta di credito. Per candidarti scrivi a <a href='mailto:samuele.busato@heleox.it?subject=Beta%20HeleoX'>samuele.busato@heleox.it</a> oppure prova subito la dashboard su <a href='https://app.heleox.it' target='_blank' rel='noopener'>app.heleox.it</a>."
+    ]
+  },
+  {
+    "date": "10 luglio 2026",
+    "tag": "Rilascio",
+    "title": "Nuovo modulo: rilevamento subdomain takeover",
+    "text": "HeleoX ora enumera i sottodomini via Certificate Transparency e segnala quelli a rischio <strong>takeover</strong>.",
+    "body": [
+      "HeleoX ora enumera i sottodomini dei tuoi domini in modo passivo, tramite i log pubblici di <strong>Certificate Transparency</strong> — senza generare traffico sospetto verso l'infrastruttura.",
+      "Per ogni sottodominio trovato verifica se punta a un servizio dismesso o non reclamato (hosting, CDN, piattaforme SaaS): è lo scenario classico del <strong>subdomain takeover</strong>, in cui lo staging dimenticato di due anni fa può diventare una pagina di phishing a nome tuo.",
+      "Il modulo è attivo da subito su tutti i piani che includono i moduli security completi. I sottodomini a rischio compaiono nel report settimanale con severità dedicata e istruzioni per la bonifica."
+    ]
+  },
+  {
+    "date": "1 luglio 2026",
+    "tag": "Prodotto",
+    "title": "I consigli di rimediazione ora citano la norma esatta",
+    "text": "Ogni finding GDPR è accompagnato da un consiglio pratico di rimediazione <strong>con la citazione dell'articolo di legge</strong>.",
+    "body": [
+      "Ogni finding GDPR è ora accompagnato da un consiglio pratico di rimediazione <strong>con la citazione dell'articolo di legge</strong> a cui fa riferimento — ad esempio l'art. 122 del Codice Privacy per i cookie installati prima del consenso.",
+      "Non una lista statica di cookie noti: HeleoX osserva il sito come un utente vero — cookie prima e dopo il consenso, richieste di rete reali — e collega ogni problema alla norma che lo rende sanzionabile.",
+      "È il modo più rapido per spiegare al cliente <em>perché</em> qualcosa va sistemato, e la stessa citazione finisce nel report PDF che puoi girare al cliente finale così com'è. Nessun altro strumento lo fa."
+    ]
+  }
+]

@@ -325,60 +325,10 @@
         <p>Tutti i piani includono monitoraggio automatico, confronto storico, notifiche solo quando serve. IVA esclusa.</p>
       </div>
 
-      <div class="plans">
-        <div class="plan reveal">
-          <h3>Free</h3>
-          <div class="plan-price">€0<span>/mese</span></div>
-          <ul>
-            <li>1 dominio</li>
-            <li>Scan settimanale</li>
-            <li>Headers + TLS</li>
-            <li>Dashboard</li>
-          </ul>
-          <a href="#beta" class="btn btn-ghost btn-block">Inizia gratis</a>
-        </div>
-        <div class="plan reveal delay-1">
-          <h3>Solo Dev</h3>
-          <div class="plan-price">€9<span>/mese</span></div>
-          <div class="plan-per">€3 a dominio</div>
-          <ul>
-            <li>3 domini</li>
-            <li>Scan settimanale</li>
-            <li>Tutti i moduli security</li>
-            <li>Conformità GDPR AI</li>
-            <li>Report PDF</li>
-          </ul>
-          <a href="#beta" class="btn btn-ghost btn-block">Scegli Solo Dev</a>
-        </div>
-        <div class="plan plan-featured reveal delay-2">
-          <span class="plan-badge">Più popolare</span>
-          <h3>Studio</h3>
-          <div class="plan-price">€25<span>/mese</span></div>
-          <div class="plan-per">€2,50 a dominio</div>
-          <ul>
-            <li>10 domini</li>
-            <li>Scan 2×/settimana</li>
-            <li>Tutti i moduli security</li>
-            <li>Conformità GDPR AI</li>
-            <li><strong>Consigli di rimediazione con citazione normativa</strong></li>
-          </ul>
-          <a href="#beta" class="btn btn-primary btn-block">Scegli Studio</a>
-        </div>
-        <div class="plan reveal delay-3">
-          <h3>Studio+</h3>
-          <div class="plan-price">€49<span>/mese</span></div>
-          <div class="plan-per">€1,96 a dominio</div>
-          <ul>
-            <li>25 domini</li>
-            <li>Scan giornaliero</li>
-            <li>Tutto di Studio</li>
-            <li><strong>PDF white-label</strong> (il tuo logo)</li>
-            <li>Scan autenticato*</li>
-          </ul>
-          <a href="#beta" class="btn btn-ghost btn-block">Scegli Studio+</a>
-        </div>
-      </div>
-      <p class="plans-note">Fatturazione annuale: 2 mesi gratis. Dominio extra: +€2/mese. *In arrivo. Garanzia 14 giorni soddisfatti o rimborsati.</p>
+      <!-- Card dei piani renderizzate da script.js: per cambiare prezzi,
+           domini o feature basta modificare plans.json, niente altro. -->
+      <div class="plans" id="plansGrid"></div>
+      <p class="plans-note" id="plansNote"></p>
     </div>
   </section>
 
