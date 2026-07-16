@@ -44,17 +44,6 @@
       "ctaHref": "#beta",
       "featured": false,
       "badge": null
-    },
-    {
-      "name": "Custom",
-      "price": "",
-      "period": "/mese",
-      "perDomain": "",
-      "features": ["Contattaci per creare un piano personalizzato su misura per te"],
-      "cta": "Crea il tuo piano",
-      "ctaHref": "#beta",
-      "featured": false,
-      "badge": null
     }
   ]
 }
