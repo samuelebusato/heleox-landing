@@ -52,6 +52,25 @@ if (bgVideo && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
   window.addEventListener("resize", onScroll, { passive: true });
   bgVideo.addEventListener("loadedmetadata", onScroll);
 
+  // Mobile (in particolare iOS/Safari): finché l'utente non interagisce, il
+  // browser può rifiutarsi di decodificare il video — lo sfondo resterebbe
+  // vuoto anche con il codice corretto. Un play/pause silenzioso al primo
+  // tocco "sblocca" la pipeline di decodifica; da lì in poi il seek legato
+  // allo scroll funziona come su desktop. Il video è muted+playsinline,
+  // quindi il play è consentito e comunque dura una frazione di frame.
+  const unlockDecode = () => {
+    const p = bgVideo.play();
+    if (p && typeof p.then === "function") {
+      p.then(() => {
+        bgVideo.pause();
+        onScroll();
+      }).catch(() => {
+        /* es. risparmio energetico: il seek da solo resta comunque tentato */
+      });
+    }
+  };
+  window.addEventListener("touchstart", unlockDecode, { once: true, passive: true });
+
   // Se il video non si carica (file mancante, rete), lo sfondo sparisce
   // senza lasciare artefatti: resta il colore di base di html.
   bgVideo.addEventListener("error", () => {

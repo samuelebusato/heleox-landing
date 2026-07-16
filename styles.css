@@ -36,7 +36,13 @@ body {
 }
 
 /* ---------- sfondo video scroll-driven (homepage) ---------- */
-.video-bg { position: fixed; inset: 0; z-index: -1; overflow: hidden; }
+.video-bg { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+@supports (height: 100lvh) {
+  /* su mobile la barra degli indirizzi si ritrae durante lo scroll: 100lvh
+     copre il viewport "grande", così il video non lascia mai una striscia
+     scoperta in basso mentre la barra si anima */
+  .video-bg { height: 100lvh; }
+}
 .video-bg video {
   width: 100%; height: 100%; object-fit: cover;
   opacity: 0.5; /* il video resta un'atmosfera, mai il protagonista */
