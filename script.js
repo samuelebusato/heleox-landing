@@ -14,6 +14,25 @@ const revealObserver = new IntersectionObserver(
 );
 document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
 
+// ---------- Dropdown "Moduli" nella nav ----------
+// L'apertura al passaggio del mouse è già gestita in CSS (:hover/:focus-within);
+// il click serve per il touch e per chi preferisce cliccare. Escape o un click
+// fuori chiudono il menu.
+document.querySelectorAll(".nav-drop").forEach((drop) => {
+  const toggle = drop.querySelector(".nav-drop-toggle");
+  if (!toggle) return;
+  toggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    drop.classList.toggle("open");
+  });
+  document.addEventListener("click", (e) => {
+    if (!drop.contains(e.target)) drop.classList.remove("open");
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") drop.classList.remove("open");
+  });
+});
+
 // ---------- Gauge del risk score (hero) ----------
 // score demo 84 (fascia B): coerente con l'esempio di finding mostrati.
 const GAUGE_TARGET = 84;

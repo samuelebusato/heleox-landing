@@ -74,6 +74,64 @@ code {
   transition: color 0.2s;
 }
 .nav-links a:hover { color: var(--text); }
+
+/* ---------- dropdown "Moduli" (solo CSS: hover + focus-within, niente JS) ---------- */
+.nav-drop { position: relative; }
+.nav-drop::after { content: ""; position: absolute; top: 100%; left: -20px; right: -20px; height: 14px; } /* ponte invisibile: il menu non si chiude attraversando lo spazio vuoto */
+.nav-drop-toggle {
+  background: none; border: none; cursor: pointer; padding: 0;
+  font: inherit; font-size: 0.92rem; font-weight: 500; color: var(--text-dim);
+  display: inline-flex; align-items: center; gap: 0.3rem; transition: color 0.2s;
+}
+.nav-drop:hover .nav-drop-toggle, .nav-drop:focus-within .nav-drop-toggle, .nav-drop.open .nav-drop-toggle { color: var(--text); }
+.nav-drop-toggle .caret { font-size: 0.7em; transition: transform 0.2s; }
+.nav-drop:hover .caret, .nav-drop:focus-within .caret, .nav-drop.open .caret { transform: rotate(180deg); }
+.nav-drop-menu {
+  position: absolute; top: calc(100% + 12px); left: 50%; z-index: 60;
+  min-width: 265px; padding: 0.5rem;
+  background: var(--surface-2); border: 1px solid #3a2a6e; border-radius: 14px;
+  box-shadow: var(--shadow);
+  display: flex; flex-direction: column;
+  opacity: 0; visibility: hidden; transform: translateX(-50%) translateY(8px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+.nav-drop:hover .nav-drop-menu, .nav-drop:focus-within .nav-drop-menu, .nav-drop.open .nav-drop-menu {
+  opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0);
+}
+.nav-drop-menu a {
+  padding: 0.55rem 0.8rem; border-radius: 10px; text-decoration: none;
+  color: var(--text-dim); font-size: 0.9rem; font-weight: 500;
+  display: flex; align-items: center; gap: 0.55rem; transition: background 0.15s, color 0.15s;
+}
+.nav-drop-menu a:hover { background: #ffffff0d; color: var(--text); }
+
+/* ---------- card della homepage cliccabili (link alle pagine modulo) ---------- */
+a.card { text-decoration: none; color: inherit; display: block; }
+a.card .card-more { margin-top: 0.8rem; font-size: 0.85rem; font-weight: 700; color: var(--primary-2); }
+a.card:hover .card-more { color: var(--cyan); }
+
+/* ---------- pagine modulo ---------- */
+.module-hero { position: relative; padding: 4.5rem 0 3rem; overflow: hidden; }
+.module-hero .card-icon { font-size: 2.4rem; }
+.module-hero h1 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); line-height: 1.18; font-weight: 800; letter-spacing: -0.02em; max-width: 40rem; }
+.module-hero .lead { max-width: 40rem; }
+.module-block { margin-bottom: 2.8rem; }
+.module-block h2 { font-size: 1.35rem; font-weight: 800; margin-bottom: 0.8rem; }
+.module-block p { color: var(--text-dim); max-width: 46rem; }
+.module-block p strong { color: var(--text); }
+.module-block ul { list-style: none; margin-top: 1rem; display: flex; flex-direction: column; gap: 0.6rem; max-width: 46rem; }
+.module-block ul li { color: var(--text-dim); padding-left: 1.5rem; position: relative; }
+.module-block ul li::before { content: "✓"; position: absolute; left: 0; color: var(--emerald); font-weight: 800; }
+.module-block ul li strong { color: var(--text); }
+.module-callout {
+  margin-top: 1.2rem; max-width: 46rem; padding: 1.2rem 1.4rem;
+  background: var(--surface); border-left: 3px solid var(--primary); border-radius: 0 12px 12px 0;
+  color: var(--text-dim); font-size: 0.95rem;
+}
+.module-callout strong { color: var(--text); }
+.module-cta { margin-top: 1rem; display: flex; gap: 0.9rem; flex-wrap: wrap; align-items: center; }
+.module-source { font-size: 0.78rem; color: var(--text-dim); opacity: 0.75; }
+.module-source a { color: inherit; }
 .nav-cta { display: flex; gap: 0.6rem; align-items: center; }
 @media (max-width: 760px) {
   .nav-links { display: none; }

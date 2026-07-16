@@ -23,6 +23,17 @@
         <a href="#chi">Per chi</a>
         <a href="#perche">Perché serve</a>
         <a href="#confronto">Confronto</a>
+        <div class="nav-drop">
+          <button class="nav-drop-toggle" type="button" aria-haspopup="true">Moduli <span class="caret">▾</span></button>
+          <div class="nav-drop-menu">
+            <a href="modulo-security-headers.html">🛡️ Security Headers</a>
+            <a href="modulo-tls.html">🔐 TLS &amp; Certificati</a>
+            <a href="modulo-sottodomini.html">🕸️ Sottodomini dimenticati</a>
+            <a href="modulo-secret-esposti.html">🔑 Chiavi e secret esposti</a>
+            <a href="modulo-xss-sqli.html">💉 XSS &amp; SQL Injection</a>
+            <a href="modulo-conformita-gdpr.html">⚖️ Conformità GDPR AI</a>
+          </div>
+        </div>
         <a href="#piani">Piani</a>
         <a href="blog.html">Blog</a>
       </nav>
@@ -104,36 +115,42 @@
       </div>
 
       <div class="cards-grid">
-        <div class="card reveal">
+        <a class="card reveal" href="modulo-security-headers.html">
           <div class="card-icon">🛡️</div>
           <h3>Security Headers</h3>
           <p>CSP, HSTS, X-Frame-Options e gli altri header che bloccano XSS, clickjacking e downgrade — verificati contro regole aggiornate, non solo "presente/assente".</p>
-        </div>
-        <div class="card reveal delay-1">
+          <p class="card-more">Scopri il modulo →</p>
+        </a>
+        <a class="card reveal delay-1" href="modulo-tls.html">
           <div class="card-icon">🔐</div>
           <h3>TLS &amp; Certificati</h3>
           <p>Protocolli obsoleti, cipher deboli, certificati in scadenza o mal configurati. Lo scopri settimane prima, non dal cliente che chiama lunedì mattina.</p>
-        </div>
-        <div class="card reveal delay-2">
+          <p class="card-more">Scopri il modulo →</p>
+        </a>
+        <a class="card reveal delay-2" href="modulo-sottodomini.html">
           <div class="card-icon">🕸️</div>
           <h3>Sottodomini dimenticati</h3>
           <p>Enumerazione passiva via Certificate Transparency e rilevamento del <strong>subdomain takeover</strong>: lo staging di due anni fa che può diventare una pagina di phishing a nome tuo.</p>
-        </div>
-        <div class="card reveal">
+          <p class="card-more">Scopri il modulo →</p>
+        </a>
+        <a class="card reveal" href="modulo-secret-esposti.html">
           <div class="card-icon">🔑</div>
           <h3>Chiavi e secret esposti</h3>
           <p>API key, token e credenziali dimenticati nel JavaScript pubblico. I bot li cercano ogni giorno; HeleoX li trova prima — e non li salva mai in chiaro.</p>
-        </div>
-        <div class="card reveal delay-1">
+          <p class="card-more">Scopri il modulo →</p>
+        </a>
+        <a class="card reveal delay-1" href="modulo-xss-sqli.html">
           <div class="card-icon">💉</div>
           <h3>XSS &amp; SQL Injection</h3>
           <p>Rilevamento passivo con payload innocui: individua form e parametri vulnerabili <strong>senza mai sfruttarli</strong>. Detection, non exploitation — per scelta architetturale.</p>
-        </div>
-        <div class="card card-featured reveal delay-2">
+          <p class="card-more">Scopri il modulo →</p>
+        </a>
+        <a class="card card-featured reveal delay-2" href="modulo-conformita-gdpr.html">
           <div class="card-icon">⚖️</div>
           <h3>Conformità GDPR a runtime</h3>
           <p>Non una lista statica di cookie noti: HeleoX <strong>osserva il sito come un utente vero</strong> — cookie prima e dopo il consenso, richieste di rete reali — e i consigli di rimediazione <strong>citano l'articolo di norma</strong>. Nessun altro strumento lo fa.</p>
-        </div>
+          <p class="card-more">Scopri il modulo →</p>
+        </a>
       </div>
 
       <div class="score-strip reveal">
