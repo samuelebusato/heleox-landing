@@ -14,6 +14,52 @@ const revealObserver = new IntersectionObserver(
 );
 document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
 
+// ---------- Sfondo video legato allo scroll (homepage) ----------
+// Il video non va MAI in play: a ogni scroll si calcola la frazione di
+// pagina scorsa e si porta il video al fotogramma corrispondente, con un
+// piccolo inseguimento (lerp) per rendere fluido anche uno scroll a scatti.
+// Sito fermo = nessun rAF attivo = animazione ferma, zero lavoro in idle.
+const bgVideo = document.getElementById("bgVideo");
+if (bgVideo && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  let target = 0; // frazione di scroll desiderata (0..1)
+  let current = 0; // frazione attualmente mostrata
+  let rafId = null;
+
+  const readScrollFraction = () => {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    target = max > 0 ? Math.min(Math.max(window.scrollY / max, 0), 1) : 0;
+  };
+
+  const tick = () => {
+    current += (target - current) * 0.14;
+    if (bgVideo.duration && bgVideo.readyState >= 1 && !bgVideo.seeking) {
+      // -0.05s: mai esattamente sull'ultimo frame, alcuni browser vi mostrano nero
+      bgVideo.currentTime = current * Math.max(bgVideo.duration - 0.05, 0);
+    }
+    if (Math.abs(target - current) > 0.0005) {
+      rafId = requestAnimationFrame(tick);
+    } else {
+      rafId = null;
+    }
+  };
+
+  const onScroll = () => {
+    readScrollFraction();
+    if (rafId === null) rafId = requestAnimationFrame(tick);
+  };
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll, { passive: true });
+  bgVideo.addEventListener("loadedmetadata", onScroll);
+
+  // Se il video non si carica (file mancante, rete), lo sfondo sparisce
+  // senza lasciare artefatti: resta il colore di base di html.
+  bgVideo.addEventListener("error", () => {
+    const wrap = bgVideo.closest(".video-bg");
+    if (wrap) wrap.remove();
+  });
+}
+
 // ---------- Dropdown "Moduli" nella nav ----------
 // L'apertura al passaggio del mouse è già gestita in CSS (:hover/:focus-within);
 // il click serve per il touch e per chi preferisce cliccare. Escape o un click

@@ -11,6 +11,14 @@
 </head>
 <body>
 
+  <!-- Sfondo video legato allo scroll: il video NON va mai in play da solo —
+       script.js ne imposta il fotogramma in base alla posizione di scorrimento
+       (sito fermo = animazione ferma). Il velo scuro (.video-bg::after) tiene
+       leggibili i contenuti. Nascosto con prefers-reduced-motion. -->
+  <div class="video-bg" aria-hidden="true">
+    <video id="bgVideo" src="videoZoom.mp4" muted playsinline preload="auto" tabindex="-1"></video>
+  </div>
+
   <!-- ======================= NAV ======================= -->
   <header class="nav">
     <div class="container nav-inner">

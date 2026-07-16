@@ -23,15 +23,32 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; background: var(--bg); }
 
 body {
   font-family: system-ui, "Segoe UI", Roboto, sans-serif;
-  background: var(--bg);
+  /* trasparente: sotto c'è .video-bg (html tiene il colore di base come fallback) */
+  background: transparent;
   color: var(--text);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+}
+
+/* ---------- sfondo video scroll-driven (homepage) ---------- */
+.video-bg { position: fixed; inset: 0; z-index: -1; overflow: hidden; }
+.video-bg video {
+  width: 100%; height: 100%; object-fit: cover;
+  opacity: 0.5; /* il video resta un'atmosfera, mai il protagonista */
+}
+.video-bg::after {
+  /* velo scuro: tiene il contrasto del testo ovunque, un po' più fitto in
+     alto dove vivono titolo e CTA dell'hero */
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, #120b24d9 0%, #120b24b3 45%, #120b24cc 100%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .video-bg { display: none; }
 }
 
 .container { max-width: 1120px; margin: 0 auto; padding: 0 1.5rem; }
@@ -245,7 +262,7 @@ a.card:hover .card-more { color: var(--cyan); }
 
 /* ---------- sections ---------- */
 .section { padding: 5.5rem 0; position: relative; }
-.section-alt { background: linear-gradient(180deg, var(--bg-2), var(--bg)); }
+.section-alt { background: linear-gradient(180deg, #180f30d9, #120b24cc); } /* traslucido: lascia trasparire lo sfondo video */
 .section-head { max-width: 46rem; margin-bottom: 3rem; }
 .eyebrow {
   display: inline-block; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.08em;
@@ -426,7 +443,7 @@ a.card:hover .card-more { color: var(--cyan); }
 .plans-note { margin-top: 1.6rem; text-align: center; font-size: 0.85rem; color: var(--text-dim); }
 
 /* ---------- beta ---------- */
-.beta { background: radial-gradient(ellipse 70% 90% at 50% 110%, #3b1d8a55, transparent), var(--bg-2); }
+.beta { background: radial-gradient(ellipse 70% 90% at 50% 110%, #3b1d8a55, transparent), #180f30d9; } /* traslucido come .section-alt */
 .beta-inner { text-align: center; max-width: 44rem; }
 .beta-logo { width: 76px; height: 76px; border-radius: 20px; margin-bottom: 1.4rem; box-shadow: 0 0 60px #8b5cf680; animation: pulse-glow 3.5s ease-in-out infinite; }
 @keyframes pulse-glow { 0%,100% { box-shadow: 0 0 40px #8b5cf660; } 50% { box-shadow: 0 0 80px #38d5f580; } }
