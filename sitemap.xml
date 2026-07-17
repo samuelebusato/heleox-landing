@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.heleox.it/</loc>
+  </url>
+  <url>
+    <loc>https://www.heleox.it/blog.html</loc>
+  </url>
+  <url>
+    <loc>https://www.heleox.it/modulo-security-headers.html</loc>
+  </url>
+  <url>
+    <loc>https://www.heleox.it/modulo-tls.html</loc>
+  </url>
+  <url>
+    <loc>https://www.heleox.it/modulo-sottodomini.html</loc>
+  </url>
+  <url>
+    <loc>https://www.heleox.it/modulo-secret-esposti.html</loc>
+  </url>
+  <url>
+    <loc>https://www.heleox.it/modulo-xss-sqli.html</loc>
+  </url>
+  <url>
+    <loc>https://www.heleox.it/modulo-conformita-gdpr.html</loc>
+  </url>
+</urlset>
