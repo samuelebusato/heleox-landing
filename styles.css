@@ -161,7 +161,10 @@ a.card:hover .card-more { color: var(--cyan); }
 .nav-toggle { display: none; }
 .mobile-only { display: none; }
 
-@media (max-width: 760px) {
+/* Sotto i ~1020px la nav completa (7 voci + 2 CTA) non entra nella barra:
+   i link si comprimono e le CTA vanno a capo fuori dal bordo. Il menu
+   hamburger scatta quindi già qui, non solo sui telefoni. */
+@media (max-width: 1020px) {
   /* ---- barra: logo · "Prova ora" · hamburger ---- */
   .nav-inner { gap: 0.7rem; }
   .nav-cta { margin-left: auto; }
@@ -239,6 +242,7 @@ a.card:hover .card-more { color: var(--cyan); }
 .btn {
   display: inline-block; padding: 0.85rem 1.7rem; border-radius: 12px;
   font-weight: 700; font-size: 0.98rem; text-decoration: none;
+  white-space: nowrap; /* un bottone non si spezza mai su due righe */
   transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
 }
 .btn-primary {
