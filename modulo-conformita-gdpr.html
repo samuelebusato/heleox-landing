@@ -17,7 +17,7 @@
         <img src="logo.png" alt="Logo HeleoX" class="brand-logo" />
         <span class="brand-name">Heleo<span class="accent">X</span></span>
       </a>
-      <nav class="nav-links">
+      <nav class="nav-links" id="primaryNav">
         <a href="index.html#cosa">Cos'è</a>
         <a href="index.html#chi">Per chi</a>
         <a href="index.html#perche">Perché serve</a>
@@ -35,11 +35,22 @@
         </div>
         <a href="index.html#piani">Piani</a>
         <a href="blog.html">Blog</a>
+        <!-- CTA visibili solo dentro il menu mobile a comparsa -->
+        <div class="nav-links-cta mobile-only">
+          <a href="index.html#beta" class="btn btn-ghost btn-block">Entra nella beta</a>
+          <a href="https://app.heleox.it" target="_blank" rel="noopener" class="btn btn-primary btn-block">Prova ora</a>
+        </div>
       </nav>
       <div class="nav-cta">
         <a href="index.html#beta" class="btn btn-ghost btn-sm">Entra nella beta</a>
         <a href="https://app.heleox.it" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Prova ora</a>
       </div>
+      <!-- Hamburger: visibile solo su mobile, apre/chiude .nav-links (JS) -->
+      <button class="nav-toggle" type="button" aria-label="Apri il menu di navigazione" aria-expanded="false" aria-controls="primaryNav">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
     </div>
   </header>
 

@@ -79,6 +79,33 @@ if (bgVideo && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
   });
 }
 
+// ---------- Menu mobile (hamburger) ----------
+// Su mobile .nav-links è nascosto e compare come pannello quando .nav ha .open.
+// Chiusura: tocco su un link, tasto Escape, o tocco fuori dal menu.
+const navEl = document.querySelector(".nav");
+const navToggle = document.querySelector(".nav-toggle");
+if (navEl && navToggle) {
+  const closeNav = () => {
+    navEl.classList.remove("open");
+    navToggle.setAttribute("aria-expanded", "false");
+  };
+  navToggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const open = navEl.classList.toggle("open");
+    navToggle.setAttribute("aria-expanded", String(open));
+  });
+  // un tocco su una voce (anche nel sottomenu Moduli) chiude il pannello
+  navEl.querySelectorAll(".nav-links a").forEach((a) =>
+    a.addEventListener("click", closeNav)
+  );
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeNav();
+  });
+  document.addEventListener("click", (e) => {
+    if (navEl.classList.contains("open") && !navEl.contains(e.target)) closeNav();
+  });
+}
+
 // ---------- Dropdown "Moduli" nella nav ----------
 // L'apertura al passaggio del mouse è già gestita in CSS (:hover/:focus-within);
 // il click serve per il touch e per chi preferisce cliccare. Escape o un click
