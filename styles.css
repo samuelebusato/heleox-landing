@@ -25,6 +25,12 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; background: var(--bg); }
 
+/* PREZZI-TEMP: gli elementi legati a piani/prezzi sono nascosti con
+   l'attributo hidden (cerca "PREZZI-TEMP" nelle pagine). Questa regola
+   garantisce che hidden vinca su qualsiasi display impostato dal CSS;
+   può restare anche dopo la riattivazione dei prezzi. */
+[hidden] { display: none !important; }
+
 body {
   font-family: system-ui, "Segoe UI", Roboto, sans-serif;
   /* trasparente: sotto c'è .video-bg (html tiene il colore di base come fallback) */

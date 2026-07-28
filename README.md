@@ -34,6 +34,16 @@ Ogni piano ha `name`, `price`, `period`, `perDomain` (o `null`), `features`
 card, una sola a `true`) e `badge` (etichetta sopra la card, o `null`).
 Il campo `note` in cima al file è la riga sotto le card.
 
+> **⚠️ Prezzi temporaneamente nascosti (da luglio 2026).** La sezione piani e
+> ogni menzione dei prezzi sono nascoste con l'attributo `hidden` — nulla è
+> stato eliminato, `plans.json` compreso. Al loro posto in homepage c'è la
+> sezione **Demo** (`#demo`). Per riattivare i prezzi: cerca `PREZZI-TEMP` in
+> tutti i file del sito e rimuovi gli attributi `hidden` marcati (nav di tutte
+> le pagine, sezione `#piani`, etichette delle personas, riga prezzi della
+> tabella confronto, box "Facciamo i conti", note "founding member"). La
+> sezione Demo può restare o essere rimossa: non ha dipendenze. La regola
+> `[hidden]` in `styles.css` e il controllo in `script.js` possono restare.
+
 ### Osservatorio (grafico e "Ultime dal fronte")
 
 Dati curati a mano negli array `NEWS_ITEMS` e `ATTACKS_BY_YEAR` in

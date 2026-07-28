@@ -64,7 +64,11 @@
             <a href="modulo-conformita-gdpr.html">⚖️ Conformità GDPR AI</a>
           </div>
         </div>
-        <a href="#piani">Piani</a>
+        <!-- PREZZI-TEMP: link "Piani" nascosto finché la sezione prezzi è
+             disattivata — per riattivare rimuovere l'attributo hidden qui e
+             sugli altri elementi marcati PREZZI-TEMP (cerca in tutto il sito). -->
+        <a href="#piani" hidden>Piani</a>
+        <a href="#demo">Demo</a>
         <a href="blog.html">Blog</a>
 
         <!-- CTA visibili solo dentro il menu mobile a comparsa -->
@@ -108,7 +112,7 @@
           <a href="https://app.heleox.it" target="_blank" rel="noopener" class="btn btn-primary">Prova ora — apri HeleoX →</a>
           <a href="#beta" class="btn btn-ghost">Entra nella beta gratuita</a>
         </div>
-        <p class="hero-note">Beta gratuita · 5 domini · tutto sbloccato · prezzo founding member</p>
+        <p class="hero-note">Beta gratuita · 5 domini · tutto sbloccato<span hidden> · prezzo founding member</span><!-- PREZZI-TEMP --></p>
       </div>
 
       <!-- Mockup dashboard animato -->
@@ -225,19 +229,19 @@
           <div class="persona-emoji">🧑‍💻</div>
           <h3>Freelance &amp; sviluppatori indipendenti</h3>
           <p>Consegni siti ai clienti e vuoi distinguerti? Includi "monitoraggio sicurezza e GDPR" nel prezzo: ogni mese un report PDF, ricavo ricorrente su lavoro one-shot.</p>
-          <span class="persona-plan">Piano Solo Dev — €9/mese</span>
+          <span class="persona-plan" hidden>Piano Solo Dev — €9/mese</span><!-- PREZZI-TEMP -->
         </div>
         <div class="persona reveal delay-1">
           <div class="persona-emoji">🏢</div>
           <h3>Web agency e softwarehouse</h3>
           <p>10, 20, 50 siti clienti in gestione e nessuna visibilità sistematica sulla loro postura? Un'unica dashboard, un report PDF completo ogni cliente.</p>
-          <span class="persona-plan">Piano Studio / Studio+ — da €25/mese</span>
+          <span class="persona-plan" hidden>Piano Studio / Studio+ — da €25/mese</span><!-- PREZZI-TEMP -->
         </div>
         <div class="persona reveal delay-2">
           <div class="persona-emoji">🚀</div>
           <h3>Indie hacker &amp; founder SaaS</h3>
           <p>Hai 3 progetti online e zero tempo per la sicurezza? HeleoX è il "security analyst" che i tuoi progetti non avranno mai — a meno di un caffè a settimana.</p>
-          <span class="persona-plan">Piano Solo Dev — €9/mese</span>
+          <span class="persona-plan" hidden>Piano Solo Dev — €9/mese</span><!-- PREZZI-TEMP -->
         </div>
         <div class="persona reveal delay-3">
           <div class="persona-emoji">🛒</div>
@@ -348,12 +352,14 @@
             <tr><td>Rimediazione <strong>con citazione della norma</strong></td><td class="col-hx">✅ unico</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td></tr>
             <tr><td>Qualsiasi piattaforma (non solo WP)</td><td class="col-hx">✅</td><td>✅</td><td>✅</td><td>❌ solo WP</td><td>✅</td><td>✅</td></tr>
             <tr><td>Multi-dominio senza sovrapprezzo</td><td class="col-hx">✅</td><td>❌</td><td>❌</td><td>❌</td><td>❌ prezzo a sito</td><td>parziale</td></tr>
-            <tr class="row-price"><td>Prezzo d'ingresso</td><td class="col-hx"><strong>€9/mese · 3 domini</strong></td><td>$5 · 1 sito</td><td>$19-20 · 1 sito</td><td>~$120-240/anno · 1 sito</td><td>~€10-50/mese · <strong>a sito</strong></td><td>€98-149+/mese</td></tr>
+            <!-- PREZZI-TEMP: riga prezzi del confronto nascosta -->
+            <tr class="row-price" hidden><td>Prezzo d'ingresso</td><td class="col-hx"><strong>€9/mese · 3 domini</strong></td><td>$5 · 1 sito</td><td>$19-20 · 1 sito</td><td>~$120-240/anno · 1 sito</td><td>~€10-50/mese · <strong>a sito</strong></td><td>€98-149+/mese</td></tr>
           </tbody>
         </table>
       </div>
 
-      <div class="math-box reveal">
+      <!-- PREZZI-TEMP: box "facciamo i conti" nascosto (è interamente un confronto di prezzo) -->
+      <div class="math-box reveal" hidden>
         <h3>Facciamo i conti: agenzia con 10 siti clienti</h3>
         <div class="math-row">
           <div class="math-item">
@@ -376,7 +382,12 @@
   </section>
 
   <!-- ======================= PIANI ======================= -->
-  <section class="section" id="piani">
+  <!-- PREZZI-TEMP: intera sezione piani nascosta temporaneamente (niente è
+       stato eliminato: card, plans.json e stili restano intatti). Per
+       riattivarla: rimuovere l'attributo hidden qui sotto e gli altri
+       attributi hidden marcati PREZZI-TEMP (nav, personas, tabella
+       confronto, math-box, note founding member, nav delle altre pagine). -->
+  <section class="section" id="piani" hidden>
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Prezzi</span>
@@ -406,6 +417,69 @@
     </div>
   </section>
 
+  <!-- ======================= DEMO ======================= -->
+  <!-- Sezione introdotta al posto dei piani (vedi PREZZI-TEMP): racconta
+       cosa include la demo gratuita. Quando i piani torneranno visibili
+       questa sezione può restare o essere rimossa, non ha dipendenze. -->
+  <section class="section" id="demo">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Demo</span>
+        <h2>Provala adesso: <span class="gradient-text">demo completa, tutto sbloccato</span></h2>
+        <p>
+          Durante la beta HeleoX si prova in <strong>demo gratuita</strong>: non un video né una dashboard
+          con dati finti, ma la piattaforma reale sui tuoi siti reali, con ogni funzionalità attiva.
+          Nessuna carta di credito richiesta.
+        </p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="card reveal">
+          <div class="card-icon">🌐</div>
+          <h3>Fino a 5 domini tuoi</h3>
+          <p>Aggiungi i siti che gestisci e dimostrane la proprietà con un record DNS o un file di verifica: <strong>nessuno scan senza verifica</strong> — per scelta, non per limite.</p>
+        </div>
+        <div class="card reveal delay-1">
+          <div class="card-icon">🔄</div>
+          <h3>Scan settimanale + on demand</h3>
+          <p>Il controllo periodico parte da solo ogni settimana; dopo un deploy puoi lanciare uno <strong>scan manuale</strong> e vedere subito l'effetto delle modifiche.</p>
+        </div>
+        <div class="card reveal delay-2">
+          <div class="card-icon">🛡️</div>
+          <h3>Tutti e 6 i moduli attivi</h3>
+          <p>Security headers, TLS e certificati, sottodomini dimenticati, secret esposti, XSS &amp; SQL injection e <strong>conformità GDPR a runtime</strong>: nella demo non manca nulla.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-icon">⚖️</div>
+          <h3>Consigli che citano la norma</h3>
+          <p>Per ogni non conformità ricevi il consiglio di rimediazione <strong>con l'articolo di legge citato</strong> — la funzionalità di punta di HeleoX, inclusa nella demo.</p>
+        </div>
+        <div class="card reveal delay-1">
+          <div class="card-icon">📊</div>
+          <h3>Dashboard con storico</h3>
+          <p>Risk score 0-100, fascia da A a F e <strong>confronto scan dopo scan</strong>: vedi se stai migliorando, e vieni avvisato solo se qualcosa peggiora davvero.</p>
+        </div>
+        <div class="card reveal delay-2">
+          <div class="card-icon">📄</div>
+          <h3>Report PDF</h3>
+          <p>Ogni scan produce un report pensato per essere <strong>girato al cliente finale così com'è</strong>: comprensibile, ordinato per severità, con i rimedi già indicati.</p>
+        </div>
+      </div>
+
+      <div class="score-strip reveal">
+        <div class="score-strip-text">
+          <h3>Come si prova, in tre passi</h3>
+          <p>
+            <strong>1.</strong> Apri app.heleox.it e registrati &nbsp;·&nbsp;
+            <strong>2.</strong> aggiungi un dominio e verificane la proprietà &nbsp;·&nbsp;
+            <strong>3.</strong> lancia il primo scan: punteggio, findings e report arrivano in pochi minuti.
+          </p>
+        </div>
+        <a href="https://app.heleox.it" target="_blank" rel="noopener" class="btn btn-primary">Apri la demo →</a>
+      </div>
+    </div>
+  </section>
+
   <!-- ======================= CTA BETA ======================= -->
   <section class="section beta" id="beta">
     <div class="container beta-inner reveal">
@@ -413,8 +487,8 @@
       <h2>La beta è aperta. <span class="gradient-text">Tutto sbloccato, gratis.</span></h2>
       <p>
         Cerchiamo sviluppatori e agenzie che usino HeleoX su siti veri e ci dicano cosa migliorare.
-        In cambio: <strong>5 domini, ogni funzionalità attiva, zero costi</strong> — e il prezzo
-        <strong>founding member</strong> se poi decidi di restare.
+        In cambio: <strong>5 domini, ogni funzionalità attiva, zero costi</strong>.<span hidden> — E il prezzo
+        <strong>founding member</strong> se poi decidi di restare.</span><!-- PREZZI-TEMP -->
       </p>
       <div class="hero-cta center">
         <a href="mailto:info@heleox.it?subject=Beta%20HeleoX" class="btn btn-primary btn-lg">Candidati alla beta →</a>

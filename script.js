@@ -194,7 +194,10 @@ document.querySelectorAll(".counter").forEach((el) => counterObserver.observe(el
 // basta modificare quel file. La fetch è locale (stesso dominio):
 // nessun servizio terzo, nessun cookie.
 const plansGrid = document.getElementById("plansGrid");
-if (plansGrid) {
+// PREZZI-TEMP: se la sezione piani è nascosta (attributo hidden su un
+// antenato) si salta la fetch — nessuna richiesta inutile. Alla rimozione
+// degli hidden le card tornano a renderizzarsi senza toccare questo file.
+if (plansGrid && !plansGrid.closest("[hidden]")) {
   fetch("plans.json", { cache: "no-cache" })
     .then((res) => {
       if (!res.ok) throw new Error(res.status);
