@@ -691,5 +691,17 @@ a.card:hover .card-more { color: var(--cyan); }
   background: #34d39914; border: 1px solid #34d39940;
 }
 .legal-box p { color: var(--text); }
+.plans-vat { font-size: 0.85rem; color: var(--text-dim); margin-top: 0.6rem; }
+.plans-vat strong { color: var(--text); }
+
+/* Tabelle dei documenti legali (informativa, DPA). Il wrapper scrolla in
+   orizzontale su mobile: la pagina non deve mai scorrere lateralmente. */
+.legal-table-wrap { overflow-x: auto; margin: 1.1rem 0; }
+.legal-page table { width: 100%; border-collapse: collapse; font-size: 0.87rem; min-width: 34rem; }
+.legal-page th, .legal-page td { text-align: left; padding: 0.6rem 0.7rem; border-bottom: 1px solid var(--border); color: var(--text-dim); vertical-align: top; }
+.legal-page th { color: var(--text); font-weight: 700; }
+.legal-page ol { padding-left: 1.3rem; margin: 0.6rem 0; display: flex; flex-direction: column; gap: 0.45rem; }
+.legal-page ol li { font-size: 0.95rem; color: var(--text-dim); }
+
 .legal-back { display: inline-block; margin-bottom: 2rem; color: var(--text-dim); text-decoration: none; font-size: 0.9rem; }
 .legal-back:hover { color: var(--text); }
