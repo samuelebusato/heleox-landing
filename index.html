@@ -18,7 +18,9 @@
   <meta name="twitter:description" content="HeleoX controlla ogni settimana la sicurezza e la conformità GDPR dei tuoi siti: ti dice cosa non va, come sistemarlo e cita la norma esatta." />
   <meta name="twitter:image" content="https://www.heleox.it/logo.png" />
   <link rel="icon" type="image/png" href="logo.png" />
-  <link rel="stylesheet" href="styles.css" />
+  <!-- ?v=2: cache-busting — Cloudflare tiene styles.css in cache 24h, senza
+       versione i visitatori vedrebbero l'HTML nuovo con il CSS vecchio -->
+  <link rel="stylesheet" href="styles.css?v=2" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -119,11 +121,11 @@
           <span class="hero-certs-label">Un team con certificazioni ufficiali su privacy e GDPR</span>
           <div class="hero-certs-chips">
             <span class="cert-chip">
-              <span class="cert-chip-logo"><img src="cert-federprivacy.png" alt="Federprivacy" loading="lazy" /></span>
+              <span class="cert-chip-logo"><img src="cert-federprivacy.png" alt="Federprivacy" width="144" height="18" loading="lazy" /></span>
               <span class="cert-chip-testo"><strong>Master per Privacy Officer e Consulente della Privacy</strong><em>Federprivacy</em></span>
             </span>
             <span class="cert-chip">
-              <span class="cert-chip-logo"><img src="cert-wolterskluwer.svg" alt="Wolters Kluwer" loading="lazy" /></span>
+              <span class="cert-chip-logo"><img src="cert-wolterskluwer.svg" alt="Wolters Kluwer" width="85" height="18" loading="lazy" /></span>
               <span class="cert-chip-testo"><strong>Direttiva NIS2: indicazioni operative</strong><em>Wolters Kluwer</em></span>
             </span>
           </div>
