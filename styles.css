@@ -315,6 +315,10 @@ a.card:hover .card-more { color: var(--cyan); }
 .cert-chip-testo { display: flex; flex-direction: column; line-height: 1.3; max-width: 21rem; }
 .cert-chip-testo strong { font-size: 0.84rem; font-weight: 600; color: var(--text); }
 .cert-chip-testo em { font-style: normal; font-size: 0.73rem; color: var(--text-dim); }
+/* Sezione #esperto ("Parla con un esperto"): ponte verso la consulenza di F.R.
+   di Busato Fausto. Riusa .cert-chip / .hero-cta.center / .btn / .section-alt;
+   qui solo il contenitore centrato delle chip certificazione. */
+.expert-certs { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; margin: 0 auto 1.8rem; max-width: 46rem; }
 
 /* ---------- dashboard mockup ---------- */
 .dash-card {
