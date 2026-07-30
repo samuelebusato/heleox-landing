@@ -293,6 +293,29 @@ a.card:hover .card-more { color: var(--cyan); }
 .hero-cta.center { justify-content: center; }
 .hero-note { margin-top: 1.1rem; font-size: 0.86rem; color: var(--text-dim); }
 
+/* ---------- certificazioni privacy/GDPR nella hero ---------- */
+.hero-certs { margin-top: 1.7rem; display: flex; flex-direction: column; gap: 0.75rem; }
+.hero-certs-label {
+  font-size: 0.76rem; font-weight: 700; letter-spacing: 0.13em;
+  text-transform: uppercase; color: var(--text-dim);
+}
+.hero-certs-chips { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+.cert-chip {
+  display: inline-flex; align-items: center; gap: 0.8rem;
+  padding: 0.55rem 1rem 0.55rem 0.6rem; border-radius: 12px;
+  border: 1px solid #4b3a86; background: #ffffff0a;
+  backdrop-filter: blur(6px);
+}
+.cert-chip-logo {
+  display: grid; place-items: center; flex: none;
+  height: 36px; padding: 0.3rem 0.55rem;
+  background: #ffffff; border-radius: 8px;
+}
+.cert-chip-logo img { height: 20px; width: auto; max-width: 104px; display: block; }
+.cert-chip-testo { display: flex; flex-direction: column; line-height: 1.3; max-width: 21rem; }
+.cert-chip-testo strong { font-size: 0.84rem; font-weight: 600; color: var(--text); }
+.cert-chip-testo em { font-style: normal; font-size: 0.73rem; color: var(--text-dim); }
+
 /* ---------- dashboard mockup ---------- */
 .dash-card {
   background: linear-gradient(160deg, var(--surface), var(--bg-2));
