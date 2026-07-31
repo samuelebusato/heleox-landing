@@ -21,15 +21,54 @@
   <!-- ?v=2: cache-busting — Cloudflare tiene styles.css in cache 24h, senza
        versione i visitatori vedrebbero l'HTML nuovo con il CSS vecchio -->
   <link rel="stylesheet" href="styles.css?v=3" />
+  <!-- SEO: grafo Schema.org — Organization collegata all'azienda madre
+       (F.R. di Busato Fausto) + SoftwareApplication per l'app + WebSite.
+       Aiuta Google a riconoscere il brand "HeleoX" come entità. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "HeleoX",
-    "url": "https://www.heleox.it/",
-    "logo": "https://www.heleox.it/logo.png",
-    "description": "HeleoX controlla ogni settimana la sicurezza e la conformità GDPR dei tuoi siti: cosa non va, come sistemarlo e la norma citata.",
-    "email": "info@heleox.it"
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.heleox.it/#org",
+        "name": "HeleoX",
+        "url": "https://www.heleox.it/",
+        "logo": "https://www.heleox.it/logo.png",
+        "description": "HeleoX controlla ogni settimana la sicurezza e la conformità GDPR dei tuoi siti: cosa non va, come sistemarlo e la norma citata.",
+        "email": "info@heleox.it",
+        "parentOrganization": {
+          "@type": "Organization",
+          "name": "F.R. di Busato Fausto",
+          "url": "https://www.fr-busato.it/",
+          "vatID": "IT01878620358"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.heleox.it/#website",
+        "url": "https://www.heleox.it/",
+        "name": "HeleoX",
+        "inLanguage": "it",
+        "publisher": { "@id": "https://www.heleox.it/#org" }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://www.heleox.it/#app",
+        "name": "HeleoX",
+        "url": "https://app.heleox.it/",
+        "applicationCategory": "SecurityApplication",
+        "operatingSystem": "Web",
+        "description": "Piattaforma di monitoraggio continuo: scansione di sicurezza e verifica di conformità GDPR dei siti web, con indicazioni di rimedio e riferimento normativo.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "EUR",
+          "description": "Beta gratuita — 5 domini, tutte le funzioni sbloccate"
+        },
+        "publisher": { "@id": "https://www.heleox.it/#org" },
+        "inLanguage": "it"
+      }
+    ]
   }
   </script>
 </head>
