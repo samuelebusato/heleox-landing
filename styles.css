@@ -315,10 +315,36 @@ a.card:hover .card-more { color: var(--cyan); }
 .cert-chip-testo { display: flex; flex-direction: column; line-height: 1.3; max-width: 21rem; }
 .cert-chip-testo strong { font-size: 0.84rem; font-weight: 600; color: var(--text); }
 .cert-chip-testo em { font-style: normal; font-size: 0.73rem; color: var(--text-dim); }
-/* Sezione #esperto ("Parla con un esperto"): ponte verso la consulenza di F.R.
-   di Busato Fausto. Riusa .cert-chip / .hero-cta.center / .btn / .section-alt;
-   qui solo il contenitore centrato delle chip certificazione. */
-.expert-certs { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; margin: 0 auto 1.8rem; max-width: 46rem; }
+
+/* ---------- sezione #esperto ("Parla con un esperto") ---------- */
+/* Pannello in evidenza: ponte verso la consulenza di F.R. di Busato Fausto.
+   Card col bordo/glow viola del brand; riusa .cert-chip / .hero-cta.center / .btn. */
+.expert-panel {
+  position: relative; max-width: 52rem; margin: 0 auto;
+  padding: 3rem 2.5rem 2.6rem; text-align: center;
+  border-radius: 22px; border: 1px solid #7c5df0;
+  background: linear-gradient(150deg, #2b1a5ecc, #1c1238e6);
+  box-shadow: var(--shadow); overflow: hidden;
+}
+.expert-glow {
+  position: absolute; left: 20%; right: 20%; top: -45%; height: 320px;
+  background: radial-gradient(ellipse at center, #8b5cf655, transparent 70%);
+  filter: blur(40px); pointer-events: none;
+}
+.expert-inner { position: relative; z-index: 1; }
+.expert-icon {
+  width: 64px; height: 64px; margin: 0 auto 1.2rem;
+  display: grid; place-items: center; font-size: 1.9rem;
+  border-radius: 18px; background: linear-gradient(150deg, #7c3aed, #38d5f5);
+  box-shadow: 0 0 40px #8b5cf680;
+}
+.expert-panel .pill { margin-bottom: 1rem; }
+.expert-panel h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 800; letter-spacing: -0.01em; line-height: 1.2; }
+.expert-lead { margin: 1rem auto 0; max-width: 40rem; color: var(--text-dim); font-size: 1.02rem; }
+.expert-lead strong { color: var(--text); }
+.expert-certs { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; margin: 1.8rem auto; max-width: 44rem; }
+.expert-panel .hero-cta { margin-top: 0.4rem; }
+@media (max-width: 600px) { .expert-panel { padding: 2.2rem 1.3rem 2rem; } }
 
 /* ---------- dashboard mockup ---------- */
 .dash-card {
