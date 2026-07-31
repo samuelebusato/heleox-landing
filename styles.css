@@ -332,18 +332,12 @@ a.card:hover .card-more { color: var(--cyan); }
   filter: blur(40px); pointer-events: none;
 }
 .expert-inner { position: relative; z-index: 1; }
-.expert-icon {
-  width: 64px; height: 64px; margin: 0 auto 1.2rem;
-  display: grid; place-items: center; font-size: 1.9rem;
-  border-radius: 18px; background: linear-gradient(150deg, #7c3aed, #38d5f5);
-  box-shadow: 0 0 40px #8b5cf680;
-}
-.expert-panel .pill { margin-bottom: 1rem; }
+.expert-panel .pill { margin-bottom: 1.2rem; }
 .expert-panel h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 800; letter-spacing: -0.01em; line-height: 1.2; }
 .expert-lead { margin: 1rem auto 0; max-width: 40rem; color: var(--text-dim); font-size: 1.02rem; }
 .expert-lead strong { color: var(--text); }
 .expert-certs { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; margin: 1.8rem auto; max-width: 44rem; }
-.expert-panel .hero-cta { margin-top: 0.4rem; }
+.expert-panel .hero-cta { gap: 1rem; align-items: center; justify-content: center; margin-top: 0.8rem; }
 @media (max-width: 600px) { .expert-panel { padding: 2.2rem 1.3rem 2rem; } }
 
 /* ---------- dashboard mockup ---------- */
