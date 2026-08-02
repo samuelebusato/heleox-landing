@@ -669,6 +669,20 @@ a.card:hover .card-more { color: var(--cyan); }
 .footer { border-top: 1px solid var(--border); padding: 3rem 0; }
 .footer-inner { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.9rem; }
 .footer p { color: var(--text-dim); font-size: 0.88rem; max-width: 38rem; }
+/* chip "Un prodotto di F.R. di Busato Fausto" — richiamo all'azienda madre */
+.madeby {
+  display: inline-flex; align-items: baseline; gap: 0.4rem;
+  padding: 0.35rem 0.9rem; border: 1px solid var(--border); border-radius: 999px;
+  background: var(--surface); text-decoration: none; line-height: 1.4;
+}
+.madeby-label { color: var(--text-dim); font-size: 0.78rem; }
+.madeby-name { color: var(--text); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.01em; }
+.madeby:hover { border-color: var(--cyan); }
+.madeby:hover .madeby-name { color: var(--cyan); }
+/* riga d'apertura dell'hero: pill + chip azienda madre fianco a fianco,
+   a capo su schermi stretti; il margine sotto passa dalla pill alla riga */
+.hero-toprow { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; margin-bottom: 1.4rem; }
+.hero-toprow .pill { margin-bottom: 0; }
 .footer-fine { font-size: 0.75rem !important; opacity: 0.7; }
 .footer-links { display: flex; gap: 0.7rem; align-items: center; font-size: 0.88rem; }
 .footer-links a { color: var(--text); text-decoration: none; font-weight: 600; }
