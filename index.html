@@ -20,7 +20,7 @@
   <link rel="icon" type="image/png" href="logo.png" />
   <!-- ?v=2: cache-busting — Cloudflare tiene styles.css in cache 24h, senza
        versione i visitatori vedrebbero l'HTML nuovo con il CSS vecchio -->
-  <link rel="stylesheet" href="styles.css?v=6" />
+  <link rel="stylesheet" href="styles.css?v=7" />
   <!-- SEO: grafo Schema.org — Organization collegata all'azienda madre
        (F.R. di Busato Fausto) + SoftwareApplication per l'app + WebSite.
        Aiuta Google a riconoscere il brand "HeleoX" come entità. -->
@@ -111,6 +111,7 @@
         <a href="#piani" hidden>Piani</a>
         <a href="#demo">Demo</a>
         <a href="#esperto">Consulenza</a>
+        <a href="#recensioni">Recensioni</a>
         <a href="blog.html">Blog</a>
 
         <!-- CTA visibili solo dentro il menu mobile a comparsa -->
@@ -582,6 +583,58 @@
     </div>
   </section>
 
+  <!-- ======================= RECENSIONI ======================= -->
+  <!-- Le recensioni mostrate vivono in recensioni.json (curate: pubblichi solo
+       quelle approvate). Il form NON salva nulla e non traccia: compone
+       un'email precompilata verso info@heleox.it — coerente con la promessa
+       "nessun cookie né tracking". Logica in recensioni.js. -->
+  <section class="section section-alt" id="recensioni">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Recensioni</span>
+        <h2>Cosa dicono <span class="gradient-text">di HeleoX</span></h2>
+        <p>Hai provato la demo o la beta? Raccontaci com'è andata. Le recensioni vengono pubblicate dopo una verifica.</p>
+      </div>
+
+      <!-- Riepilogo media: nascosto finché non c'è almeno una recensione -->
+      <div class="reviews-summary reveal" id="reviewsSummary" hidden>
+        <span class="reviews-avg-num" id="reviewsAvg">0,0</span>
+        <span class="reviews-avg-stars" id="reviewsAvgStars" aria-hidden="true"></span>
+        <span class="reviews-count" id="reviewsCount"></span>
+      </div>
+
+      <div class="reviews-grid" id="reviewsGrid"></div>
+      <p class="reviews-empty" id="reviewsEmpty" hidden>Non ci sono ancora recensioni pubblicate. Vuoi essere il primo?</p>
+
+      <!-- Form: lascia una recensione (compone un'email, non salva dati) -->
+      <div class="review-form-wrap reveal">
+        <h3>Lascia una recensione</h3>
+        <form class="review-form" id="reviewForm" novalidate>
+          <div class="rf-row">
+            <label class="rf-field" for="rfName">
+              <span>Nome</span>
+              <input type="text" id="rfName" name="nome" maxlength="60" placeholder="Come vuoi comparire" autocomplete="name" required />
+            </label>
+            <div class="rf-field rf-stars-field">
+              <span class="rf-label">Valutazione</span>
+              <div class="rf-stars" id="rfStars" role="radiogroup" aria-label="Valutazione da 1 a 5 stelle"></div>
+            </div>
+          </div>
+          <label class="rf-field" for="rfComment">
+            <span>Commento</span>
+            <textarea id="rfComment" name="commento" rows="4" maxlength="600" placeholder="La tua esperienza con HeleoX" required></textarea>
+          </label>
+          <p class="rf-error" id="rfError" role="alert" hidden></p>
+          <p class="rf-ok" id="rfOk" hidden>Si apre la tua email con la recensione già compilata: inviala e la pubblicheremo dopo una verifica. Grazie!</p>
+          <div class="rf-foot">
+            <p class="rf-note">Inviando si apre la tua email con la recensione già scritta: la pubblichiamo dopo una verifica. <strong>Il sito non salva alcun dato.</strong></p>
+            <button type="submit" class="btn btn-primary">Invia la recensione →</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
   <!-- ======================= CTA BETA ======================= -->
   <section class="section beta" id="beta">
     <div class="container beta-inner reveal">
@@ -631,7 +684,7 @@
       </nav>
       <p class="footer-legal">
         HeleoX è un servizio in <strong>beta gratuita</strong> gestito da F.R. di Busato Fausto ·
-        Sede legale: via Marzabotto 1, 42017 Novellara (RE) · P.IVA 01878620358 · REA RE 232527 ·
+        Sede legale: Novellara (RE) · P.IVA 01878620358 · REA RE 232527 ·
         Contatto: <a href="mailto:info@heleox.it">info@heleox.it</a>
       </p>
       <p class="footer-fine">
@@ -642,5 +695,6 @@
   </footer>
 
   <script src="script.js"></script>
+  <script src="recensioni.js"></script>
 </body>
 </html>
