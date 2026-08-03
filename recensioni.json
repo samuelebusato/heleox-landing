@@ -1,1 +1,8 @@
-[]
+[
+  {
+    "nome": "Recensione di esempio",
+    "stelle": 5,
+    "commento": "Recensione dimostrativa per mostrare l'aspetto della sezione. Sostituiscila (o affiancane altre) con le recensioni reali dei tuoi utenti modificando recensioni.json.",
+    "data": "esempio"
+  }
+]
