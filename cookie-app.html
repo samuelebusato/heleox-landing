@@ -8,16 +8,56 @@
   <meta name="robots" content="noindex" />
   <link rel="canonical" href="https://www.heleox.it/cookie-app.html" />
   <link rel="icon" type="image/png" href="logo.png" />
-  <link rel="stylesheet" href="styles.css?v=6" />
+  <!-- I due caratteri sono self-hosted (fonts/), come in home page. -->
+  <link rel="preload" href="fonts/bricolage-grotesque-wght.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/inter-wght.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="base.css?v=1" />
+  <link rel="stylesheet" href="pagina.css?v=1" />
 </head>
 <body>
+
+  <!-- Stessa atmosfera della home: e' cio' che tiene insieme il sito. -->
+  <div class="atmo" aria-hidden="true">
+    <span class="glow glow-a"></span>
+    <span class="glow glow-b"></span>
+    <span class="glow glow-c"></span>
+  </div>
 
   <header class="nav">
     <div class="container nav-inner">
       <a href="index.html" class="brand">
-        <img src="logo.png" alt="Logo HeleoX" class="brand-logo" />
+        <img src="logo.png" alt="Logo HeleoX" class="brand-logo" width="26" height="26" />
         <span class="brand-name">Heleo<span class="accent">X</span></span>
       </a>
+      <nav class="nav-links" id="primaryNav">
+        <a href="index.html#scanner">Scan gratuito</a>
+        <div class="nav-drop">
+          <button class="nav-drop-toggle" type="button" aria-haspopup="true">Moduli &#9662;</button>
+          <div class="nav-drop-menu">
+            <a href="modulo-security-headers.html">Security headers</a>
+            <a href="modulo-tls.html">TLS e certificati</a>
+            <a href="modulo-sottodomini.html">Sottodomini dimenticati</a>
+            <a href="modulo-secret-esposti.html">Chiavi e secret esposti</a>
+            <a href="modulo-xss-sqli.html">XSS e SQL injection</a>
+            <a href="modulo-conformita-gdpr.html">Cookie e consenso</a>
+          </div>
+        </div>
+        <a href="index.html#profondita">Profondit&agrave;</a>
+        <a href="index.html#demo">Demo</a>
+        <a href="index.html#esperto">Consulenza</a>
+        <a href="blog.html">Blog</a>
+        <div class="nav-links-cta mobile-only">
+          <a href="index.html#esperto" class="btn btn-block">Contattaci</a>
+          <a href="https://app.heleox.it" target="_blank" rel="noopener" class="btn btn-primary btn-block">Prova la demo</a>
+        </div>
+      </nav>
+      <div class="nav-cta">
+        <a href="index.html#esperto" class="btn btn-sm">Contattaci</a>
+        <a href="https://app.heleox.it" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Prova la demo</a>
+      </div>
+      <button class="nav-toggle" type="button" aria-label="Apri il menu di navigazione" aria-expanded="false" aria-controls="primaryNav">
+        <span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span>
+      </button>
     </div>
   </header>
 
@@ -108,5 +148,6 @@
     </div>
   </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>

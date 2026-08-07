@@ -1,0 +1,193 @@
+/* ============================================================================
+   HeleoX — pagina.css
+   Le pagine interne: moduli, blog e documenti legali. Va caricato DOPO
+   base.css, che porta il sistema (caratteri, token, barra, piè di pagina).
+
+   Qui c'è solo ciò che la home non ha: la testata compatta delle pagine
+   interne, i blocchi dei moduli, il blog e l'impaginato dei documenti.
+   ========================================================================= */
+
+/* -------------------------------------- 1. TESTATA DELLE PAGINE INTERNE
+   Non è l'apertura della home: non deve occupare uno schermo intero né
+   rubare la scena al contenuto. Stessa luce, un terzo dell'altezza. */
+.page-hero {
+  position: relative; overflow-x: clip;
+  padding-block: var(--sp-9) var(--sp-8);
+  border-bottom: 1px solid var(--line);
+}
+.page-hero::before {
+  content: ""; position: absolute; left: 50%; top: -40%; translate: -50% 0;
+  width: min(1200px, 130vw); height: 130%; pointer-events: none; z-index: -1;
+  background: radial-gradient(ellipse 44% 54% at 50% 40%, rgba(124, 58, 237, .3), transparent 68%);
+  filter: blur(10px);
+}
+.page-hero .eyebrow { margin-bottom: var(--sp-4); }
+.page-hero h1 { max-width: 20ch; margin-bottom: var(--sp-5); }
+.page-hero .lead { font-size: var(--step-1); line-height: 1.7; max-width: 62ch; color: var(--ink-7); }
+
+/* pastiglia del modulo, al posto della vecchia emoji dentro un riquadro */
+.page-badge {
+  display: inline-flex; align-items: center; gap: var(--sp-3);
+  margin-bottom: var(--sp-5); padding: var(--sp-2) var(--sp-4);
+  border: 1px solid var(--line-2); border-radius: 999px;
+  background: rgba(195,165,245,.08);
+  font-family: var(--font-mono); font-size: var(--step--2);
+  letter-spacing: .16em; text-transform: uppercase; color: var(--violet-lt);
+}
+
+/* ------------------------------------------------- 2. BLOCCHI DEI MODULI */
+.module-block { padding-block: var(--sp-7); border-bottom: 1px solid var(--line); }
+.module-block:last-of-type { border-bottom: 0; }
+.module-block h2 { margin-bottom: var(--sp-5); max-width: 24ch; }
+.module-block > p { margin-bottom: var(--sp-4); }
+.module-block ul { display: grid; gap: var(--sp-4); max-width: 74ch; }
+.module-block li {
+  position: relative; padding-left: var(--sp-6);
+  font-size: var(--step-0); list-style: none;
+}
+.module-block li::before {
+  content: "—"; position: absolute; left: 0; top: 0;
+  font-family: var(--font-mono); color: var(--violet-lt);
+}
+
+.module-callout {
+  margin-top: var(--sp-6); padding: var(--sp-6);
+  border: 1px solid var(--line-2); border-left: 2px solid var(--violet-lt);
+  border-radius: var(--r);
+  background: linear-gradient(110deg, rgba(124,58,237,.14), rgba(255,255,255,.02));
+  font-size: var(--step-0); color: var(--ink-7);
+}
+.module-callout strong { color: var(--ink-9); }
+
+.module-cta {
+  display: flex; flex-wrap: wrap; gap: var(--sp-3);
+  margin-top: var(--sp-8); padding-top: var(--sp-7); border-top: 1px solid var(--line);
+}
+
+/* ------------------------------------------------------------ 3. BLOG */
+.blog-grid { display: grid; gap: var(--sp-4); }
+@media (min-width: 720px)  { .blog-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1040px) { .blog-grid { grid-template-columns: repeat(3, 1fr); } }
+.blog-card {
+  display: flex; flex-direction: column; gap: var(--sp-3); text-align: left;
+  padding: var(--sp-6); border: 1px solid var(--line); border-radius: var(--r-lg);
+  background: rgba(255,255,255,.028); cursor: pointer;
+  transition: transform var(--dur-base) var(--ease-out),
+              border-color var(--dur-base) var(--ease-soft),
+              background var(--dur-base) var(--ease-soft);
+}
+.blog-card:hover { transform: translateY(-4px); border-color: var(--line-2); background: rgba(195,165,245,.06); }
+.blog-card .news-meta {
+  display: flex; gap: var(--sp-3);
+  font-family: var(--font-mono); font-size: var(--step--2);
+  letter-spacing: .14em; text-transform: uppercase;
+}
+.blog-card .news-date { color: var(--ink-5); }
+.blog-card .news-tag { color: var(--violet-lt); }
+.blog-title { font-family: var(--font-display); font-size: var(--step-1); font-weight: 500; color: var(--ink-9); letter-spacing: -.014em; line-height: 1.3; }
+.blog-text { font-size: var(--step--1); color: var(--ink-7); max-width: none; }
+.blog-more {
+  margin-top: auto; padding-top: var(--sp-3);
+  font-family: var(--font-mono); font-size: var(--step--2);
+  letter-spacing: .12em; text-transform: uppercase; color: var(--violet-lt);
+  transition: transform var(--dur-base) var(--ease-out);
+}
+.blog-card:hover .blog-more { transform: translateX(5px); }
+.blog-empty { font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-5); }
+
+/* finestra dell'articolo */
+/* Un <dialog> chiuso e' gia' display:none: dichiarare display:grid senza
+   condizione lo renderebbe visibile sempre, anche da chiuso. */
+.blog-modal { border: 0; padding: 0; max-width: none; max-height: none; background: none; }
+.blog-modal[open] {
+  position: fixed; inset: 0; z-index: 120; display: grid; place-items: center;
+  width: 100%; height: 100%;
+  padding: var(--sp-5); background: rgba(8, 5, 16, .82);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+.blog-modal::backdrop { background: rgba(8, 5, 16, .6); }
+.modal-card {
+  position: relative; width: min(760px, 100%); max-height: 84vh; overflow-y: auto;
+  padding: var(--sp-8) var(--sp-7);
+  border: 1px solid var(--line-2); border-radius: var(--r-lg);
+  background: linear-gradient(180deg, var(--panel-2), var(--panel));
+  box-shadow: 0 50px 110px -40px rgba(0,0,0,1);
+}
+.modal-close {
+  position: absolute; top: var(--sp-4); right: var(--sp-4);
+  width: 38px; height: 38px; border-radius: 50%; cursor: pointer;
+  border: 1px solid var(--line-2); color: var(--ink-7); font-size: 1.1rem;
+  transition: background var(--dur-fast) var(--ease-soft), color var(--dur-fast) var(--ease-soft);
+}
+.modal-close:hover { background: rgba(255,255,255,.07); color: var(--ink-9); }
+.modal-date, .modal-tag {
+  font-family: var(--font-mono); font-size: var(--step--2);
+  letter-spacing: .14em; text-transform: uppercase;
+}
+.modal-date { color: var(--ink-5); }
+.modal-tag { color: var(--violet-lt); }
+.modal-title { margin: var(--sp-3) 0 var(--sp-5); }
+.modal-body p { margin-bottom: var(--sp-4); }
+
+/* ------------------------------------------------- 4. DOCUMENTI LEGALI
+   Testo lungo: la leggibilità viene prima di tutto. Misura contenuta,
+   titoli distanziati, tabelle che respirano. */
+/* Queste pagine NON hanno un .container dentro: il contenuto sta
+   direttamente in <main class="legal-page">. La larghezza e i margini
+   li porta quindi il contenitore stesso. */
+.legal-page {
+  width: 100%; max-width: 900px; margin-inline: auto;
+  padding: var(--sp-8) var(--sp-5) var(--sp-9);
+}
+.legal-page h2 {
+  margin: var(--sp-8) 0 var(--sp-4); padding-top: var(--sp-6);
+  border-top: 1px solid var(--line); font-size: var(--step-2);
+}
+.legal-page h2:first-of-type { border-top: 0; padding-top: 0; margin-top: var(--sp-6); }
+.legal-page h3 { margin: var(--sp-6) 0 var(--sp-3); }
+.legal-page p, .legal-page li { max-width: 72ch; }
+.legal-page p { margin-bottom: var(--sp-4); }
+.legal-page ul { display: grid; gap: var(--sp-3); margin-bottom: var(--sp-5); padding-left: 0; }
+.legal-page ol { display: grid; gap: var(--sp-3); margin-bottom: var(--sp-5); padding-left: var(--sp-5); }
+.legal-page ul li {
+  position: relative; padding-left: var(--sp-5); list-style: none;
+}
+.legal-page ul li::before {
+  content: "·"; position: absolute; left: 0; top: 0;
+  color: var(--violet-lt); font-family: var(--font-mono);
+}
+.legal-page ol { list-style: decimal; }
+.legal-page ol li { list-style: decimal; }
+.legal-page a { color: var(--violet-lt); text-decoration: underline; text-underline-offset: 3px; }
+.legal-page strong { color: var(--ink-9); }
+
+.legal-updated {
+  display: inline-block; margin-bottom: var(--sp-6);
+  font-family: var(--font-mono); font-size: var(--step--2);
+  letter-spacing: .14em; text-transform: uppercase; color: var(--ink-5);
+}
+.legal-back {
+  display: inline-block; margin-bottom: var(--sp-5);
+  font-family: var(--font-mono); font-size: var(--step--2);
+  letter-spacing: .12em; text-transform: uppercase; color: var(--ink-5);
+  transition: color var(--dur-fast) var(--ease-soft);
+}
+.legal-back:hover { color: var(--violet-lt); }
+.legal-box {
+  margin: var(--sp-6) 0; padding: var(--sp-6);
+  border: 1px solid var(--line-2); border-radius: var(--r);
+  background: rgba(255,255,255,.03);
+}
+.legal-box p:last-child { margin-bottom: 0; }
+
+.legal-table-wrap { overflow-x: auto; margin: var(--sp-6) 0; }
+.legal-table-wrap table { width: 100%; border-collapse: collapse; font-size: var(--step--1); min-width: 560px; }
+.legal-table-wrap th, .legal-table-wrap td {
+  padding: var(--sp-4); text-align: left; vertical-align: top;
+  border-bottom: 1px solid var(--line);
+}
+.legal-table-wrap th {
+  font-family: var(--font-mono); font-size: var(--step--2); font-weight: 400;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--ink-5);
+}
+.legal-table-wrap td:first-child { color: var(--ink-9); }
