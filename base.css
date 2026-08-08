@@ -407,11 +407,30 @@ code, .mono { font-family: var(--font-mono); font-size: .92em; }
 .nav-toggle-bar { display: block; width: 21px; height: 1.5px; background: var(--ink-9); }
 .mobile-only { display: block; }
 
-@media (min-width: 1060px) {
+@media (min-width: 1140px) {
   .nav-links, .nav-cta { display: flex; }
   .nav-toggle, .mobile-only { display: none; }
+
+  /* Tre zone in griglia, non un blocco centrato fuori dal flusso.
+     Prima `.nav-links` era `position: absolute; left: 50%`, cioè centrato
+     GEOMETRICAMENTE sulla barra: si estendeva della stessa quantità a destra
+     e a sinistra del centro, mentre i due lati hanno ingombri diversi (a
+     sinistra solo il logo, a destra due pulsanti). Il risultato misurato a
+     1280px era il pulsante «Contattaci» sovrapposto al link «Blog» di 14px.
+     Non era mancanza di spazio — il contenuto sta in larghezza — ma il fatto
+     che un elemento fuori dal flusso non può accorgersi di cosa ha accanto.
+     In griglia il centro è una colonna vera: la sovrapposizione diventa
+     impossibile per costruzione, non evitata da un calcolo da ritarare. */
+  .nav-inner { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; }
+  .nav-links {
+    position: static; left: auto; translate: none;
+    justify-self: center; max-width: 100%;
+  }
 }
-@media (max-width: 1059px) {
+/* Il menu compatto sale da 1060px a 1139px: fra quelle due soglie la barra
+   distesa non ci sta davvero (servono ~1030px di sole voci, più i margini),
+   e comprimerla produrrebbe di nuovo voci addossate. Meglio l'hamburger. */
+@media (max-width: 1139px) {
   .nav-links {
     position: absolute; top: 100%; left: 0; right: 0; translate: none;
     display: none; flex-direction: column; align-items: stretch; gap: 0;

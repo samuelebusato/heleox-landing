@@ -228,11 +228,31 @@ function escaRenderResult(body, data) {
     chip("var(--sev-med)", (c.medium || 0) + (c.low || 0), "da sistemare") +
     chip("var(--sev-ok)", c.ok || 0, "a posto");
 
+  // Quando il dominio reindirizza (tipico: apex → www) la misura avviene su
+  // PIÙ host, e lo stesso rilievo può comparire due volte con lo stesso titolo.
+  // Senza dire su quale host è stato misurato, quelle due righe si leggono come
+  // un duplicato o un errore nostro — ed è invece l'informazione che serve per
+  // sapere DOVE intervenire, visto che sono due server distinti con due
+  // configurazioni distinte. L'host si mostra solo se ce n'è più d'uno: con un
+  // host solo sarebbe una colonna sempre uguale, cioè rumore.
+  const hosts = [...new Set(findings.map((f) => f.host).filter(Boolean))];
+  const multiHost = hosts.length > 1;
+
   const perMod = {};
   findings.forEach((f) => { (perMod[f.modulo] ||= []).push(f); });
   const gruppi = Object.keys(ESCA_MODULI)
     .filter((k) => perMod[k]?.length)
-    .map((k) => escaGroup(k, perMod[k])).join("");
+    .map((k) => escaGroup(k, perMod[k], multiHost)).join("");
+
+  const notaHost = multiHost
+    ? `<p class="esca-hosts-note">
+         Questo dominio <b>reindirizza</b>, quindi il controllo ha misurato
+         ${hosts.length} host distinti: ${hosts.map((h) => `<code>${escaEsc(h)}</code>`).join(" e ")}.
+         Sono server diversi con configurazioni diverse: un rilievo che compare
+         due volte non è un doppione, va corretto su <b>entrambi</b>. Ogni voce
+         indica l'host a cui si riferisce.
+       </p>`
+    : "";
 
   const locked = Array.isArray(data.locked) && data.locked.length
     ? escaLocked(data.locked, data.domain) : "";
@@ -245,6 +265,7 @@ function escaRenderResult(body, data) {
        </div>
        <div class="esca-counts">${counts || '<span>nessun problema rilevato</span>'}</div>
      </div>
+     ${notaHost}
      ${gruppi}
      ${locked}
      <div class="esca-foot">
@@ -253,27 +274,36 @@ function escaRenderResult(body, data) {
      </div>`;
 }
 
-function escaGroup(modulo, items) {
-  const voci = items.map(escaItem).join("");
+function escaGroup(modulo, items, multiHost) {
+  const voci = items.map((f) => escaItem(f, multiHost)).join("");
   return `<div class="esca-group">
     <div class="esca-group-head"><h5>${escaEsc(ESCA_MODULI[modulo] || modulo)}</h5><span class="g-count">${items.length}</span></div>
     ${voci}</div>`;
 }
 
 // Una voce = un <details>: apertura/chiusura accessibile, anche senza JS.
-function escaItem(f) {
+function escaItem(f, multiHost) {
   const sev = String(f.severita || "info").toLowerCase();
+  // Nell'ELENCO, non solo nel dettaglio: due voci con lo stesso titolo devono
+  // distinguersi senza doverle aprire una per una.
+  const hostChip = multiHost && f.host
+    ? `<span class="rep-host" title="Host su cui è stata fatta questa misura">${escaEsc(f.host)}</span>`
+    : "";
+  const hostRiga = f.host
+    ? `<p class="rep-host-line">Misurato su <code>${escaEsc(f.host)}</code></p>`
+    : "";
   const rem = f.remediation ? `<div class="rep-remedy"><span class="rep-remedy-label">Come si risolve</span><p>${escaEsc(f.remediation)}</p></div>` : "";
   const ref = f.riferimento ? `<p class="rep-ref">Riferimento: ${escaEsc(f.riferimento)}</p>` : "";
   const ev  = f.evidenza ? `<p class="rep-evidence">Evidenza: <code>${escaEsc(f.evidenza)}</code></p>` : "";
   return `<details class="rep-item rep-${escaEsc(sev)}">
     <summary>
       <span class="rep-ico" aria-hidden="true">${ESCA_SEV_ICO[sev] || "·"}</span>
-      <span class="rep-title">${escaEsc(f.titolo || f.tipo || "Osservazione")}</span>
+      <span class="rep-title">${escaEsc(f.titolo || f.tipo || "Osservazione")}${hostChip}</span>
       <span class="rep-sev">${escaEsc(ESCA_SEV_LABEL[sev] || sev)}</span>
       <span class="rep-caret" aria-hidden="true"></span>
     </summary>
     <div class="rep-detail">
+      ${hostRiga}
       <p class="rep-desc">${escaEsc(f.descrizione || "")}</p>
       ${rem}${ref}${ev}
     </div>

@@ -307,6 +307,24 @@
 .rep-remedy { margin-top: var(--sp-3); padding: var(--sp-3) var(--sp-4); border-left: 2px solid var(--sev-ok); background: rgba(53,208,165,.06); border-radius: var(--r-sm); }
 .rep-remedy-label { display: block; font-family: var(--font-mono); font-size: var(--step--2); text-transform: uppercase; letter-spacing: .12em; color: var(--sev-ok); margin-bottom: var(--sp-1); }
 .rep-remedy p { font-size: var(--step--1); color: var(--ink-7); }
+/* Host della misura. Compare solo quando il dominio reindirizza e gli host
+   misurati sono più d'uno: è ciò che distingue due voci con lo stesso titolo,
+   che altrimenti si leggono come un doppione invece che come due server da
+   correggere entrambi. */
+.rep-host {
+  margin-left: var(--sp-2); padding: 2px var(--sp-2); border-radius: 999px;
+  font-family: var(--font-mono); font-size: var(--step--2); white-space: nowrap;
+  color: var(--ink-7); background: rgba(255,255,255,.05); border: 1px solid var(--line);
+}
+.rep-host-line { font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-5); }
+.rep-host-line code { color: var(--ink-7); }
+.esca-hosts-note {
+  margin-bottom: var(--sp-4); padding: var(--sp-3) var(--sp-4);
+  border-left: 2px solid var(--violet); background: rgba(139,111,255,.07);
+  border-radius: var(--r-sm); font-size: var(--step--1); color: var(--ink-7);
+}
+.esca-hosts-note code { font-family: var(--font-mono); color: var(--ink-9); word-break: break-all; }
+
 .rep-ref, .rep-evidence { margin-top: var(--sp-3); font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-5); }
 .rep-evidence code { color: var(--ink-7); word-break: break-all; }
 .rep-critical .rep-ico, .rep-high .rep-ico { border-color: var(--sev-hi); color: var(--sev-hi); }
