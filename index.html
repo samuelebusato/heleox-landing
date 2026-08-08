@@ -109,12 +109,12 @@
              disattivata — per riattivare rimuovere l'attributo hidden qui e
              sugli altri elementi marcati PREZZI-TEMP (cerca in tutto il sito). -->
         <a href="#piani" hidden>Piani</a>
-        <a href="#demo">Demo</a>
+        <a href="#demo">Versione plus</a>
         <a href="#esperto">Consulenza</a>
         <a href="blog.html">Blog</a>
         <div class="nav-links-cta mobile-only">
           <a href="#esperto" class="btn btn-block">Contattaci</a>
-          <a href="https://app.heleox.it" target="_blank" rel="noopener" class="btn btn-primary btn-block">Prova la demo</a>
+          <a href="https://app.heleox.it" target="_blank" rel="noopener" class="btn btn-primary btn-block">Prova la versione plus gratuitamente</a>
         </div>
       </nav>
       <!-- Due sole chiamate, e nessuna fa concorrenza al campo dell'hero:
@@ -122,7 +122,7 @@
            successivi — parlare con noi, oppure entrare nel prodotto. -->
       <div class="nav-cta">
         <a href="#esperto" class="btn btn-sm">Contattaci</a>
-        <a href="https://app.heleox.it" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Prova la demo</a>
+        <a href="https://app.heleox.it" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Prova plus gratis</a>
       </div>
       <button class="nav-toggle" type="button" aria-label="Apri il menu di navigazione" aria-expanded="false" aria-controls="primaryNav">
         <span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span>
@@ -211,6 +211,31 @@
             qualsiasi vedrebbe comunque. È il primo dei sei strati.
             <a href="#top" class="inline-link">Il campo per il dominio è in cima →</a>
           </p>
+        </div>
+      </div>
+
+      <!-- ============ IL REPORT DELLO SCAN-ESCA ============
+           Riempito da script.js dopo l'invio del dominio nell'hero. Ogni voce
+           e' un <details> (apertura/chiusura accessibile, anche senza JS): il
+           riepilogo, poi i gruppi per modulo, poi cosa si sblocca verificando
+           il dominio. L'intero report si apre/chiude col pulsante nella testata.
+           Nascosto finche' non c'e' uno scan: senza JS resta invisibile e il
+           resto della sezione spiega comunque cosa fa il controllo. -->
+      <div class="esca" id="escaReport" hidden>
+        <div class="panel esca-panel">
+          <span class="panel-scan" aria-hidden="true"><i></i></span>
+          <div class="panel-head">
+            <span class="panel-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="panel-title">report passivo · <b id="escaDomain">—</b></span>
+            <span class="panel-state"><span class="pill-dot" aria-hidden="true"></span><span id="escaState">in attesa</span></span>
+            <button type="button" class="esca-collapse" id="escaCollapse" aria-expanded="true" aria-controls="escaBody">
+              <span class="sr-only">Nascondi o mostra il report</span>
+              <span class="esca-chevron" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="panel-body" id="escaBody">
+            <!-- popolato da script.js: sintesi, gruppi, blocco "sblocca", CTA -->
+          </div>
         </div>
       </div>
 
@@ -577,16 +602,20 @@
     </div>
   </section>
 
-  <!-- ======================= DEMO ======================= -->
+  <!-- ======================= VERSIONE PLUS =======================
+       app.heleox.it non e' una "demo": e' la versione PLUS completa, gratis
+       durante la beta. Lo scan gratuito in cima e' il livello 0 (passivo);
+       qui si entra nel prodotto completo dopo aver verificato il dominio. -->
   <section class="section" id="demo">
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow"><span class="idx">07</span> / Demo</span>
+        <span class="eyebrow"><span class="idx">07</span> / Versione plus</span>
         <div>
           <h2>Provala adesso, tutto sbloccato</h2>
           <p>
-            Durante la beta HeleoX si prova in <strong>demo gratuita</strong>: non un video né una
-            dashboard con dati finti, ma la piattaforma reale sui tuoi siti reali. Nessuna carta di credito.
+            app.heleox.it è la <strong>versione plus</strong>, completa: durante la beta si prova
+            <strong>gratis</strong> — non un video né una dashboard con dati finti, ma la piattaforma
+            reale sui tuoi siti reali. Nessuna carta di credito.
           </p>
         </div>
       </div>
@@ -594,7 +623,7 @@
       <div class="rows stagger">
         <div class="row"><span class="row-idx">01</span><span class="row-title">Fino a 5 domini tuoi</span><span class="row-txt">Aggiungi i siti che gestisci e dimostrane la proprietà con un record DNS o un file: <strong>nessuno scan senza verifica</strong> — per scelta, non per limite.</span><span class="row-go"></span></div>
         <div class="row"><span class="row-idx">02</span><span class="row-title">Fino a 3 scan settimanali</span><span class="row-txt">Il controllo parte da solo ogni settimana; dopo un deploy puoi lanciare uno <strong>scan manuale</strong> e vedere subito l'effetto delle modifiche.</span><span class="row-go"></span></div>
-        <div class="row"><span class="row-idx">03</span><span class="row-title">Tutti e sei i moduli</span><span class="row-txt">Header, TLS, sottodomini, secret esposti, XSS e SQL injection, cookie e consenso: nella demo non manca nulla.</span><span class="row-go"></span></div>
+        <div class="row"><span class="row-idx">03</span><span class="row-title">Tutti e sei i moduli</span><span class="row-txt">Header, TLS, sottodomini, secret esposti, XSS e SQL injection, cookie e consenso: nella versione plus non manca nulla.</span><span class="row-go"></span></div>
         <div class="row"><span class="row-idx">04</span><span class="row-title">L'evidenza, non l'opinione</span><span class="row-txt">Per ogni osservazione ricevi <strong>il fatto e la sua prova</strong> — cosa, quando, con quale richiesta di rete — e il riferimento normativo accanto.</span><span class="row-go"></span></div>
         <div class="row"><span class="row-idx">05</span><span class="row-title">Dashboard con storico</span><span class="row-txt">Risk score 0-100, fascia A-F e <strong>confronto scan dopo scan</strong>: vedi se stai migliorando, e vieni avvisato solo se qualcosa peggiora.</span><span class="row-go"></span></div>
         <div class="row"><span class="row-idx">06</span><span class="row-title">Report PDF</span><span class="row-txt">Ogni scan produce un report pensato per essere <strong>girato al cliente finale così com'è</strong>: ordinato per severità, coi rimedi già indicati.</span><span class="row-go"></span></div>
@@ -605,7 +634,7 @@
           <h3>Come si prova, in tre passi</h3>
           <p><strong>1.</strong> Apri app.heleox.it e registrati &nbsp;·&nbsp; <strong>2.</strong> aggiungi un dominio e verificane la proprietà &nbsp;·&nbsp; <strong>3.</strong> lancia il primo scan.</p>
         </div>
-        <a href="https://app.heleox.it" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Apri la demo →</a>
+        <a href="https://app.heleox.it" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Prova la versione plus gratuitamente →</a>
       </div>
     </div>
   </section>
@@ -659,7 +688,7 @@
         <span class="eyebrow"><span class="idx">08</span> / Recensioni</span>
         <div>
           <h2>Cosa dicono di HeleoX</h2>
-          <p>Hai provato la demo o la beta? Raccontaci com'è andata. Le recensioni vengono pubblicate dopo una verifica.</p>
+          <p>Hai provato la versione plus o la beta? Raccontaci com'è andata. Le recensioni vengono pubblicate dopo una verifica.</p>
         </div>
       </div>
 

@@ -235,6 +235,102 @@
 .scan-msg.err { border-left-color: var(--sev-hi); background: rgba(255,107,107,.08); }
 
 
+/* ============ 14. REPORT DELLO SCAN-ESCA
+   I risultati del controllo passivo: sintesi col punteggio, gruppi per modulo
+   con voci apribili (<details>, quindi accessibili anche senza JS), blocco
+   "sblocca con la verifica" e richiamo alla versione plus. Riusa .panel. */
+.esca { margin-top: var(--sp-6); }
+.esca[hidden] { display: none; }
+.esca-panel { scroll-margin-top: 6rem; }
+.anim .esca.is-in .esca-panel { animation: esca-in var(--dur-slow) var(--ease-out) both; }
+@keyframes esca-in { from { opacity: 0; transform: translateY(28px) scale(.98); } to { opacity: 1; transform: none; } }
+
+/* testata: pulsante apri/chiudi tutto il report */
+.esca-collapse {
+  margin-left: var(--sp-3); flex: none; width: 34px; height: 34px; border-radius: var(--r-sm);
+  display: grid; place-content: center; cursor: pointer;
+  border: 1px solid var(--line-2); background: rgba(0,0,0,.25); color: var(--ink-7);
+  transition: border-color var(--dur-fast), color var(--dur-fast);
+}
+.esca-collapse:hover { border-color: var(--violet); color: var(--ink-9); }
+.esca-chevron { width: 9px; height: 9px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg) translateY(-2px); transition: transform var(--dur-fast) var(--ease-mid); }
+.esca-collapse[aria-expanded="false"] .esca-chevron { transform: rotate(-135deg) translateY(-2px); }
+#escaBody[hidden] { display: none; }
+
+/* stato "in corso": i moduli passivi che girano */
+.esca-steps { display: grid; gap: var(--sp-3); }
+.esca-step { display: grid; grid-template-columns: auto 1fr auto; gap: var(--sp-4); align-items: center; font-size: var(--step--1); color: var(--ink-7); }
+.esca-step .s-ico { width: 16px; height: 16px; border-radius: 50%; border: 1px solid var(--line-2); display: grid; place-content: center; font-size: 9px; color: var(--ink-5); }
+.esca-step.done .s-ico { border-color: var(--sev-ok); color: var(--sev-ok); }
+.esca-step.run  .s-ico { border-color: var(--violet-lt); color: var(--violet-lt); }
+.esca-step .s-state { font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-5); white-space: nowrap; }
+
+/* sintesi: anello del punteggio + fascia + conteggi per severita */
+.esca-summary { display: grid; gap: var(--sp-5); align-items: center; padding-bottom: var(--sp-5); margin-bottom: var(--sp-2); border-bottom: 1px solid var(--line); }
+@media (min-width: 640px) { .esca-summary { grid-template-columns: auto 1fr; gap: var(--sp-6); } }
+.esca-score { display: flex; align-items: center; gap: var(--sp-4); }
+.esca-ring { --v: 0; width: 84px; height: 84px; border-radius: 50%; flex: none; display: grid; place-content: center; position: relative;
+  background: conic-gradient(var(--ring-col) calc(var(--v) * 1%), rgba(255,255,255,.07) 0); }
+.esca-ring::before { content: ""; position: absolute; inset: 7px; border-radius: 50%; background: var(--panel); }
+.esca-ring b { position: relative; font-family: var(--font-display); font-size: var(--step-2); color: var(--ink-9); line-height: 1; }
+.esca-band { font-family: var(--font-display); font-size: var(--step-3); line-height: 1; }
+.esca-band small { display: block; font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-5); text-transform: uppercase; letter-spacing: .14em; margin-top: var(--sp-1); }
+.esca-counts { display: flex; flex-wrap: wrap; gap: var(--sp-2) var(--sp-4); font-family: var(--font-mono); font-size: var(--step--2); }
+.esca-counts span { display: inline-flex; align-items: center; gap: var(--sp-2); color: var(--ink-5); }
+.esca-counts i { width: 8px; height: 8px; border-radius: 2px; }
+.esca-summary.f-a, .esca-summary.f-b { --ring-col: var(--sev-ok); }
+.esca-summary.f-c { --ring-col: var(--sev-med); }
+.esca-summary.f-d, .esca-summary.f-f { --ring-col: var(--sev-hi); }
+.esca-band.f-a, .esca-band.f-b { color: var(--sev-ok); }
+.esca-band.f-c { color: var(--sev-med); }
+.esca-band.f-d, .esca-band.f-f { color: var(--sev-hi); }
+
+/* gruppi per modulo */
+.esca-group { margin-top: var(--sp-5); }
+.esca-group-head { display: flex; align-items: baseline; gap: var(--sp-3); margin-bottom: var(--sp-2); }
+.esca-group-head h5 { font-family: var(--font-mono); font-size: var(--step--2); letter-spacing: .16em; text-transform: uppercase; color: var(--ink-5); font-weight: 400; }
+.esca-group-head .g-count { font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-5); }
+
+/* voce apribile (<details>) */
+.rep-item { border: 1px solid var(--line); border-radius: var(--r-sm); background: rgba(0,0,0,.18); margin-top: var(--sp-2); }
+.rep-item > summary { display: grid; grid-template-columns: auto 1fr auto auto; gap: var(--sp-3); align-items: center; padding: var(--sp-3) var(--sp-4); cursor: pointer; list-style: none; }
+.rep-item > summary::-webkit-details-marker { display: none; }
+.rep-item > summary:hover { background: rgba(255,255,255,.03); }
+.rep-item > summary:focus-visible { outline: 2px solid var(--violet); outline-offset: -2px; }
+.rep-ico { width: 18px; height: 18px; border-radius: 50%; border: 1px solid var(--line-2); display: grid; place-content: center; font-size: 10px; color: var(--ink-5); }
+.rep-title { font-size: var(--step--1); color: var(--ink-9); }
+.rep-sev { font-family: var(--font-mono); font-size: var(--step--2); text-transform: uppercase; letter-spacing: .1em; color: var(--ink-5); white-space: nowrap; }
+.rep-caret { width: 8px; height: 8px; border-right: 2px solid var(--ink-5); border-bottom: 2px solid var(--ink-5); transform: rotate(45deg); transition: transform var(--dur-fast); }
+.rep-item[open] > summary .rep-caret { transform: rotate(-135deg); }
+.rep-detail { padding: 0 var(--sp-4) var(--sp-4); }
+.rep-desc { font-size: var(--step--1); color: var(--ink-7); margin-top: var(--sp-3); padding-top: var(--sp-3); border-top: 1px solid var(--line); }
+.rep-remedy { margin-top: var(--sp-3); padding: var(--sp-3) var(--sp-4); border-left: 2px solid var(--sev-ok); background: rgba(53,208,165,.06); border-radius: var(--r-sm); }
+.rep-remedy-label { display: block; font-family: var(--font-mono); font-size: var(--step--2); text-transform: uppercase; letter-spacing: .12em; color: var(--sev-ok); margin-bottom: var(--sp-1); }
+.rep-remedy p { font-size: var(--step--1); color: var(--ink-7); }
+.rep-ref, .rep-evidence { margin-top: var(--sp-3); font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-5); }
+.rep-evidence code { color: var(--ink-7); word-break: break-all; }
+.rep-critical .rep-ico, .rep-high .rep-ico { border-color: var(--sev-hi); color: var(--sev-hi); }
+.rep-critical .rep-sev,  .rep-high .rep-sev { color: var(--sev-hi); }
+.rep-medium .rep-ico { border-color: var(--sev-med); color: var(--sev-med); }
+.rep-medium .rep-sev { color: var(--sev-med); }
+.rep-low .rep-ico { border-color: var(--sev-med); }
+.rep-ok .rep-ico { border-color: var(--sev-ok); color: var(--sev-ok); }
+.rep-ok .rep-sev { color: var(--sev-ok); }
+
+/* blocco "sblocca con la verifica del dominio" */
+.esca-locked { margin-top: var(--sp-6); padding: var(--sp-5); border: 1px dashed var(--line-2); border-radius: var(--r); background: rgba(124,58,237,.05); }
+.esca-locked h5 { font-family: var(--font-display); font-size: var(--step-1); color: var(--ink-9); margin-bottom: var(--sp-3); font-weight: 500; }
+.esca-locked ul { display: grid; gap: var(--sp-2); margin-bottom: var(--sp-4); }
+.esca-locked li { display: grid; grid-template-columns: auto 1fr; gap: var(--sp-3); font-size: var(--step--1); color: var(--ink-7); }
+.esca-locked li .lk { font-family: var(--font-mono); color: var(--violet-lt); }
+.esca-locked li b { color: var(--ink-9); font-weight: 500; }
+
+/* riga finale + errore */
+.esca-foot { margin-top: var(--sp-5); padding-top: var(--sp-4); border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: var(--sp-3) var(--sp-5); align-items: center; justify-content: space-between; }
+.esca-foot .note { font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-5); max-width: 46ch; }
+.esca-error { padding: var(--sp-4) var(--sp-5); border-left: 2px solid var(--sev-hi); background: rgba(255,107,107,.08); font-size: var(--step--1); color: var(--ink-7); border-radius: var(--r-sm); }
+
+
 /* --------------------------------------------- 15. TABELLA
    La colonna HeleoX non e' una colonna come le altre: e' il motivo per cui
    la tabella esiste. Ha fondo proprio, bordi laterali, testata dedicata e
