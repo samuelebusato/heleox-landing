@@ -2,18 +2,25 @@
 
 Sito statico (HTML/CSS/JS vanilla), senza cookie né richieste a servizi terzi.
 
-## ⚠️ Stato: il redesign NON è pubblicato
+## Stato: redesign pubblicato, con lo scan-esca vero (2026-08-08)
 
-Il redesign del **2026-08-07** vive sul ramo `redesign-2026-08`, non su `main`.
+Il redesign del **2026-08-07** è stato unito a `main` e pubblicato il
+**2026-08-08**, quando la condizione che lo teneva fermo è venuta meno: il
+backend dello scan-esca esiste, è deployato e collaudato. La homepage espone un
+campo «scrivi un dominio» che ora **produce un risultato vero**.
 
-**Non va unito a `main` finché non esiste il backend dello scan-esca.** La
-homepage espone un campo «scrivi un dominio» che oggi non produce un risultato
-vero, e `main` va in produzione a ogni push: unirlo adesso pubblicherebbe una
-promessa che il sito non mantiene.
+> La regola che ha tenuto il ramo fermo per un giorno era: *non unire finché il
+> backend non esiste*, perché `main` va in produzione a ogni push e unirlo prima
+> avrebbe pubblicato una promessa che il sito non manteneva. È stata rispettata,
+> ed è il motivo per cui vale la pena riscriverla invece di cancellarla: se un
+> domani si aggiunge un altro campo che promette un risultato, il criterio è lo
+> stesso — prima il risultato esiste, poi lo si mette in homepage.
 
-Punto di integrazione unico: `avviaScanEsca()` in [`script.js`](script.js).
-Quando l'endpoint pubblico esiste si riscrive il **corpo di quella funzione** —
-markup, validazione e messaggi restano — si verifica, e solo allora si unisce.
+**Punto di integrazione dello scan**: `avviaScanEsca()` in [`script.js`](script.js),
+agganciata all'API tramite la costante `ESCA_API_BASE` in cima al file. Se quella
+costante venisse svuotata, la pagina **degrada in modo onesto** — valida il
+dominio e rimanda all'app, senza mai fingere un risultato. `?escaMock=1` forza
+dati finti per il solo sviluppo del layout.
 
 ## Fogli di stile — tre file, un sistema solo
 
