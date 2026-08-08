@@ -22,6 +22,28 @@ costante venisse svuotata, la pagina **degrada in modo onesto** — valida il
 dominio e rimanda all'app, senza mai fingere un risultato. `?escaMock=1` forza
 dati finti per il solo sviluppo del layout.
 
+## ⚠️ La cache di Cloudflare, e perché ogni asset ha `?v=N`
+
+**Davanti a CloudFront c'è Cloudflare**, e il workflow di deploy invalida solo
+CloudFront. Conseguenza misurata il **2026-08-08**: dopo la pubblicazione del
+redesign il sito serviva i CSS nuovi ma il **JavaScript vecchio di undici
+giorni** — `last-modified: 28 Jul`, `Age: 7717` — perché i CSS erano referenziati
+come `home.css?v=5` (chiave di cache nuova → miss → file fresco) mentre gli
+script erano `script.js` nudo, ancora in cache Cloudflare con `max-age=86400`.
+
+L'effetto è particolarmente insidioso perché **il deploy risulta riuscito** e
+l'origine è corretta: interrogando direttamente CloudFront il file era quello
+nuovo. Solo passando dal dominio pubblico si vedeva quello vecchio. Il sintomo
+per chi guarda il sito è "le animazioni non partono e lo scan non funziona",
+cioè un guasto che sembra del codice e invece è di consegna.
+
+**Regola**: ogni riferimento a un asset versionabile (`.css`, `.js`) porta un
+`?v=N`, e **si incrementa N a ogni modifica di quel file**. L'HTML non ne ha
+bisogno: il workflow lo carica con `no-cache`. Per verificare che una modifica
+sia davvero arrivata al pubblico, confrontare `curl https://www.heleox.it/<file>`
+con `curl https://d2n9o351dpmg7i.cloudfront.net/<file>`: se differiscono, è
+cache Cloudflare, non un deploy fallito.
+
 ## Fogli di stile — tre file, un sistema solo
 
 | File | Chi lo carica | Cosa contiene |
