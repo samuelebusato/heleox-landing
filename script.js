@@ -81,7 +81,7 @@ function normalizzaDominio(grezzo) {
 // ?escaMock=1 nell'URL forza dati finti locali: solo per lo sviluppo e la
 // verifica del layout, mai in produzione (in produzione l'URL non ha quel
 // parametro, quindi il ramo mock non viene mai preso).
-const ESCA_API_BASE = "";
+const ESCA_API_BASE = "https://cz5kpi7ce5.execute-api.eu-west-1.amazonaws.com";
 const ESCA_MOCK = new URLSearchParams(location.search).has("escaMock");
 const ESCA_POLL_MS = 2500;
 const ESCA_TIMEOUT_MS = 155000; // i moduli Fargate (TLS, conformità) hanno spin-up + browser
