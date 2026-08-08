@@ -2,6 +2,38 @@
 
 Sito statico (HTML/CSS/JS vanilla), senza cookie né richieste a servizi terzi.
 
+## ⚠️ Stato: il redesign NON è pubblicato
+
+Il redesign del **2026-08-07** vive sul ramo `redesign-2026-08`, non su `main`.
+
+**Non va unito a `main` finché non esiste il backend dello scan-esca.** La
+homepage espone un campo «scrivi un dominio» che oggi non produce un risultato
+vero, e `main` va in produzione a ogni push: unirlo adesso pubblicherebbe una
+promessa che il sito non mantiene.
+
+Punto di integrazione unico: `avviaScanEsca()` in [`script.js`](script.js).
+Quando l'endpoint pubblico esiste si riscrive il **corpo di quella funzione** —
+markup, validazione e messaggi restano — si verifica, e solo allora si unisce.
+
+## Fogli di stile — tre file, un sistema solo
+
+| File | Chi lo carica | Cosa contiene |
+|---|---|---|
+| [`base.css`](base.css) | **tutte** le pagine | caratteri, token, reset, tipografia, atmosfera, barra, bottoni, pannelli, piè di pagina, animazioni |
+| [`home.css`](home.css) | solo `index.html` | ciò che esiste unicamente in prima pagina |
+| [`pagina.css`](pagina.css) | moduli, blog, documenti legali | testata compatta, blocchi dei moduli, blog, impaginato dei documenti |
+
+L'ordine conta: `base.css` **prima** dell'altro. `styles.css` è il vecchio
+foglio e non è più caricato da nessuna pagina.
+
+### Caratteri
+
+Self-hosted in [`fonts/`](fonts/): **Bricolage Grotesque** per i titoli,
+**Inter** per il testo, entrambi variabili col solo asse dei pesi (40 e 47 KB).
+Licenze SIL accanto ai file. **Nessuna richiesta a Google Fonts**: la promessa
+«nessun servizio terzo» del footer vale anche per i caratteri. Precaricati nel
+`<head>` di ogni pagina, perché il browser li scoprirebbe solo dopo il CSS.
+
 ## Come aggiornare i contenuti
 
 I contenuti che cambiano spesso vivono in file JSON: si modificano direttamente
@@ -42,7 +74,7 @@ Il campo `note` in cima al file è la riga sotto le card.
 > le pagine, sezione `#piani`, etichette delle personas, riga prezzi della
 > tabella confronto, box "Facciamo i conti", note "founding member"). La
 > sezione Demo può restare o essere rimossa: non ha dipendenze. La regola
-> `[hidden]` in `styles.css` e il controllo in `script.js` possono restare.
+> `[hidden]` (ora in `base.css`) e il controllo in `script.js` possono restare.
 
 ### Osservatorio (grafico e "Ultime dal fronte")
 

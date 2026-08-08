@@ -18,7 +18,11 @@
   <meta name="twitter:description" content="Il modulo TLS di HeleoX controlla certificati e cifratura del tuo sito ogni settimana: scopri un certificato in scadenza settimane prima, non dal cliente che chiama lunedì mattina." />
   <meta name="twitter:image" content="https://www.heleox.it/logo.png" />
   <link rel="icon" type="image/png" href="logo.png" />
-  <link rel="stylesheet" href="styles.css?v=6" />
+  <!-- I due caratteri sono self-hosted (fonts/), come in home page. -->
+  <link rel="preload" href="fonts/bricolage-grotesque-wght.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/inter-wght.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="base.css?v=1" />
+  <link rel="stylesheet" href="pagina.css?v=1" />
   <!-- SEO: dati strutturati del modulo (Service + breadcrumb) -->
   <script type="application/ld+json">
   {
@@ -51,60 +55,57 @@
 </head>
 <body>
 
+  <!-- Stessa atmosfera della home: e' cio' che tiene insieme il sito. -->
+  <div class="atmo" aria-hidden="true">
+    <span class="glow glow-a"></span>
+    <span class="glow glow-b"></span>
+    <span class="glow glow-c"></span>
+  </div>
+
   <header class="nav">
     <div class="container nav-inner">
       <a href="index.html" class="brand">
-        <img src="logo.png" alt="Logo HeleoX" class="brand-logo" />
+        <img src="logo.png" alt="Logo HeleoX" class="brand-logo" width="26" height="26" />
         <span class="brand-name">Heleo<span class="accent">X</span></span>
       </a>
       <nav class="nav-links" id="primaryNav">
-        <a href="index.html#cosa">Cos'è</a>
-        <a href="index.html#chi">Per chi</a>
-        <a href="index.html#perche">Perché serve</a>
-        <a href="index.html#confronto">Confronto</a>
+        <a href="index.html#scanner">Scan gratuito</a>
         <div class="nav-drop">
-          <button class="nav-drop-toggle nav-active" type="button" aria-haspopup="true">Moduli <span class="caret">▾</span></button>
+          <button class="nav-drop-toggle" type="button" aria-haspopup="true">Moduli &#9662;</button>
           <div class="nav-drop-menu">
-            <a href="modulo-security-headers.html">🛡️ Security Headers</a>
-            <a href="modulo-tls.html">🔐 TLS &amp; Certificati</a>
-            <a href="modulo-sottodomini.html">🕸️ Sottodomini dimenticati</a>
-            <a href="modulo-secret-esposti.html">🔑 Chiavi e secret esposti</a>
-            <a href="modulo-xss-sqli.html">💉 XSS &amp; SQL Injection</a>
-            <a href="modulo-conformita-gdpr.html">⚖️ Conformità GDPR AI</a>
+            <a href="modulo-security-headers.html">Security headers</a>
+            <a href="modulo-tls.html">TLS e certificati</a>
+            <a href="modulo-sottodomini.html">Sottodomini dimenticati</a>
+            <a href="modulo-secret-esposti.html">Chiavi e secret esposti</a>
+            <a href="modulo-xss-sqli.html">XSS e SQL injection</a>
+            <a href="modulo-conformita-gdpr.html">Cookie e consenso</a>
           </div>
         </div>
-        <!-- PREZZI-TEMP: link Piani nascosto, al suo posto Demo -->
-        <a href="index.html#piani" hidden>Piani</a>
-        <a href="index.html#demo">Demo</a>
+        <a href="index.html#profondita">Profondit&agrave;</a>
+        <a href="index.html#demo">Versione plus</a>
+        <a href="index.html#esperto">Consulenza</a>
         <a href="blog.html">Blog</a>
-        <!-- CTA visibili solo dentro il menu mobile a comparsa -->
         <div class="nav-links-cta mobile-only">
-          <a href="index.html#beta" class="btn btn-ghost btn-block">Entra nella beta</a>
-          <a href="https://app.heleox.it" target="_blank" rel="noopener" class="btn btn-primary btn-block">Prova ora</a>
+          <a href="index.html#esperto" class="btn btn-block">Contattaci</a>
+          <a href="https://app.heleox.it" target="_blank" rel="noopener" class="btn btn-primary btn-block">Prova la versione plus gratuitamente</a>
         </div>
       </nav>
       <div class="nav-cta">
-        <a href="index.html#beta" class="btn btn-ghost btn-sm">Entra nella beta</a>
-        <a href="https://app.heleox.it" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Prova ora</a>
+        <a href="index.html#esperto" class="btn btn-sm">Contattaci</a>
+        <a href="https://app.heleox.it" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Prova plus gratis</a>
       </div>
-      <!-- Hamburger: visibile solo su mobile, apre/chiude .nav-links (JS) -->
       <button class="nav-toggle" type="button" aria-label="Apri il menu di navigazione" aria-expanded="false" aria-controls="primaryNav">
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span>
       </button>
     </div>
   </header>
 
-  <section class="module-hero">
-    <div class="hero-bg" aria-hidden="true">
-      <div class="grid-overlay"></div>
+  <section class="page-hero">
       <div class="glow glow-1"></div>
     </div>
-    <div class="container" style="position: relative;">
-      <div class="card-icon">🔐</div>
-      <span class="eyebrow">Modulo</span>
-      <h1>TLS &amp; Certificati: <span class="gradient-text">il lucchetto che i tuoi clienti guardano per primo</span></h1>
+    <div class="container">
+      <span class="page-badge">Modulo</span>
+      <h1>TLS &amp; Certificati: <span>il lucchetto che i tuoi clienti guardano per primo</span></h1>
       <p class="lead">
         La cifratura è la prima cosa che un visitatore (e Google) verifica del tuo sito — e l'unica che, quando si rompe,
         lo fa sempre nel weekend. HeleoX controlla certificati e configurazione della cifratura ogni settimana,
@@ -151,7 +152,7 @@
 
       <div class="module-cta">
         <a href="index.html#beta" class="btn btn-primary">Controlla il tuo sito — beta gratuita →</a>
-        <a href="index.html#cosa" class="btn btn-ghost">Tutti i moduli</a>
+        <a href="index.html#cosa" class="btn">Tutti i moduli</a>
       </div>
     </div>
   </section>
