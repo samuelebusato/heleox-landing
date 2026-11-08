@@ -110,6 +110,47 @@ Il campo `note` in cima al file è la riga sotto le card.
 Dati curati a mano negli array `NEWS_ITEMS` e `ATTACKS_BY_YEAR` in
 [`script.js`](script.js), con la fonte citata su ogni voce.
 
+## Deploy
+
+Ogni push su `main` (e il lancio manuale dalla tab Actions) esegue
+[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml): `s3 sync` sul
+bucket del sito, HTML e JSON ricaricati con `no-cache`, invalidazione di
+CloudFront.
+
+**Come si autentica.** Con **OIDC**, senza chiavi AWS statiche: il job chiede a
+GitHub un token e lo scambia con le credenziali temporanee del ruolo
+`arn:aws:iam::790304250429:role/heliox-github-landing` (regione `eu-west-1`).
+Il ruolo è scritto in Terraform nel progetto HeleoX
+(`infra/envs/dev/github-rilascio.tf`), si fida **solo** di
+`repo:samuelebusato/heleox-landing:ref:refs/heads/main` e può solo
+sincronizzare il bucket della landing e invalidarne la distribuzione. Il job ha
+i permessi `id-token: write` e `contents: read`, nient'altro. Restano nei secret
+di GitHub solo `S3_BUCKET` e `CLOUDFRONT_DISTRIBUTION_ID`, che non sono segreti
+d'accesso ma nomi di risorse.
+
+**Da fare a mano, in quest'ordine:**
+
+1. **Prima della prima pubblicazione**: il ruolo deve esistere su AWS (lo applica
+   chi gestisce l'infrastruttura di HeleoX). Controllare anche che il secret
+   `S3_BUCKET` valga `heliox-dev-landing-790304250429` e che
+   `CLOUDFRONT_DISTRIBUTION_ID` sia la distribuzione di quel bucket: il ruolo
+   non ha permessi su nessun'altra risorsa, e un valore diverso darebbe
+   `AccessDenied`.
+2. **Prima pubblicazione**: push su `main`, oppure *Run workflow* dalla tab
+   Actions. Il job deve concludersi in verde e il sito deve risultare aggiornato.
+3. **Solo dopo una pubblicazione riuscita**, togliere da GitHub (Settings →
+   Secrets and variables → Actions) i secret `AWS_ACCESS_KEY_ID` e
+   `AWS_SECRET_ACCESS_KEY`. Anche `AWS_REGION` non è più letto da nessuno e può
+   andare.
+4. **Cancellare l'utente IAM con le chiavi statiche della landing.** Non è in
+   Terraform, quindi nessuno lo toglierà da solo: va individuato insieme
+   all'utente (per esempio dall'ultimo uso della chiave che aveva quell'ID) e
+   cancellato a mano, **con la sua conferma**. Meglio disattivare prima le
+   chiavi e cancellare l'utente dopo un deploy riuscito senza di esse.
+
+Finché i punti 3 e 4 non sono fatti, le chiavi statiche esistono ancora anche se
+il workflow non le usa più: è proprio ciò che questo passaggio voleva togliere.
+
 ## Sviluppo locale
 
 Serve un qualsiasi server statico (le pagine caricano i JSON via `fetch`,

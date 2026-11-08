@@ -4,11 +4,15 @@
 # matita su GitHub.com, es. blog-posts.json o plans.json) e può essere
 # lanciato a mano dalla tab Actions (workflow_dispatch).
 #
+# Nessuna chiave AWS statica: il job assume un ruolo temporaneo con OIDC
+# (ruolo heliox-github-landing, definito in Terraform nel progetto HeleoX).
+# Il ruolo si fida solo di questo repository e solo del ramo main, e può
+# solo sincronizzare il bucket del sito e invalidare la sua distribuzione.
+#
 # Richiede questi Secrets (Settings → Secrets and variables → Actions):
-#   AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY — utente IAM dedicato al deploy
-#   AWS_REGION                 — es. eu-south-1
 #   S3_BUCKET                  — nome del bucket (senza s3://)
 #   CLOUDFRONT_DISTRIBUTION_ID — es. E1ABC23DEF456
+# Non servono più AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY e AWS_REGION.
 
 name: Deploy su S3 + CloudFront
 
@@ -34,16 +38,20 @@ jobs:
   deploy:
     needs: segreti-dati
     runs-on: ubuntu-latest
+    # id-token: write serve a GitHub per emettere il token OIDC che AWS
+    # scambia con le credenziali temporanee del ruolo.
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - name: Checkout del repository
         uses: actions/checkout@v4
 
-      - name: Configura credenziali AWS
+      - name: Assumi il ruolo AWS con OIDC
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
+          role-to-assume: arn:aws:iam::790304250429:role/heliox-github-landing
+          aws-region: eu-west-1
 
       # Asset (CSS, JS, immagini): cache di un giorno nel browser.
       # HTML e JSON vengono ricaricati al passo successivo con no-cache,
