@@ -25,7 +25,14 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # Prima, il controllo dei segreti e dei dati (segreti-dati.yml): se fallisce, il sito non si pubblica.
+  segreti-dati:
+    uses: ./.github/workflows/segreti-dati.yml
+    permissions:
+      contents: read
+
   deploy:
+    needs: segreti-dati
     runs-on: ubuntu-latest
     steps:
       - name: Checkout del repository

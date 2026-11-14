@@ -1,0 +1,7 @@
+# gitleaks per la landing di HeleoX: la seconda rete sui segreti, accanto a
+# controllo-segreti-dati.mjs (deploy.yml, job «segreti-dati»). Le regole di serie; le eccezioni,
+# quando servono, qui sotto, ognuna col suo perché. Sta in .github/ perché la radice si pubblica.
+title = "gitleaks per heleox-landing"
+
+[extend]
+useDefault = true

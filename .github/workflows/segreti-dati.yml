@@ -1,0 +1,41 @@
+# Il controllo dei segreti e dei dati: su GitHub non arrivano segreti né dati veri (dal 2026-11-13;
+# nel brain, Rule/regole-sviluppo-sicuro.md §9 e Rule/regole-dati-sensibili.md DS1). Due reti, sulla storia
+# intera e su tutti i rami, perché un segreto tolto dopo resta nella storia:
+#   1. .github/controllo-segreti-dati.mjs, la copia dell'originale del brain (Code/): i segreti
+#      comuni, i file di dati e di backup, i dati personali (codici fiscali, IBAN, elenchi di email e
+#      di telefoni). Le eccezioni, ognuna col perché, in .github/controllo-segreti-dati.json;
+#   2. gitleaks, fissato per versione e impronta, con le sue regole sui segreti. Le eccezioni in
+#      .github/gitleaks.toml.
+# Lo stesso controllo gira prima del commit e del push sul dispositivo (gli hook li installa
+# Code/setup-dispositivo.mjs nel brain): questa è la rete per ciò che gli hook non hanno visto.
+# Gira da solo sui rami diversi da main e sulle pull request; su main lo richiama deploy.yml, e il
+# sito si pubblica solo se è verde. Non usa segreti. .github/ non si pubblica (deploy.yml, --exclude).
+name: Segreti e dati
+
+on:
+  push:
+    branches-ignore: [main]
+  pull_request:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  segreti-dati:
+    name: Segreti e dati
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Il controllo del brain
+        run: node .github/controllo-segreti-dati.mjs --storia
+
+      - name: gitleaks
+        run: |
+          curl -sSfL -o "$RUNNER_TEMP/gitleaks.tar.gz" https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_x64.tar.gz
+          echo "551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb  $RUNNER_TEMP/gitleaks.tar.gz" | sha256sum -c -
+          tar -xzf "$RUNNER_TEMP/gitleaks.tar.gz" -C "$RUNNER_TEMP" gitleaks
+          "$RUNNER_TEMP/gitleaks" git --log-opts="--all" --config .github/gitleaks.toml --redact --no-banner .
