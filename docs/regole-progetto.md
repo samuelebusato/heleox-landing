@@ -53,7 +53,7 @@ Lo stesso a ogni rigore, qui alla profondità del rigore **prodotto** (la tabell
 
 ### Il percorso di una versione
 
-1. **Sul dispositivo** si sviluppa e si prova (FL4).
+1. **Sul dispositivo** si scrive il codice, e si guarda l'app mentre la si scrive; i test no (FL4).
 2. **Nella CI, a ogni push**: lint, tipi e test, e il controllo dei segreti e dei dati; se falliscono, il rilascio si ferma (R1, FL6, SG6).
 3. **Online**, a ogni push su `main`, col deploy automatico dei nostri siti statici (D9).
 4. **In produzione**.
@@ -185,7 +185,7 @@ Valgono sempre, se il progetto ha la cosa (PF3).
 - **S5** · Il passaggio in produzione ha criteri scritti prima — *verifica*: i criteri scritti, e il registro dell'affiancamento.
 - **S6** · Prima della prima installazione ufficiale, una review completa — *verifica*: il rapporto `docs/review-AAAA-MM-GG.md` nel repository, e nessun rilievo critico o alto aperto alla data del passaggio.
 - **S7** · La review periodica, con la cadenza del rigore — *verifica*: `node Code/review-periodica.mjs` conta le sessioni dai diari, con la cadenza del profilo del progetto; il rapporto è `docs/review-periodica-AAAA-MM-GG.md`; nel diario, `review:` fatta o saltata.
-- **FL4** · Si sviluppa sul dispositivo — *verifica*: a giudizio: il `History.md` mostra il ciclo della §4 per ogni funzione.
+- **FL4** · Sul dispositivo si scrive, nel laboratorio si prova — *verifica*: sul dispositivo `docker ps` non mostra container dei progetti; nel `History.md` l'esito di ogni test dice dove è girato, e il posto è la `dev`.
 - **FL6** · La CI giudica, senza dati veri — *verifica*: un test rotto apposta e un segreto finto fanno fallire la pipeline prima della build.
 - **DD6** · L'assenza batte il controllo — *verifica*: a giudizio, nel threat model e nelle review: per ogni dato in una zona esposta, la risposta scritta a «deve essere qui?».
 - **SI3** · Aperto solo ciò che serve, e dietro un proxy — *verifica*: da fuori rispondono solo le porte del proxy o del servizio gestito; la risposta ha TLS e le intestazioni.
